@@ -23,7 +23,7 @@ function Footer() {
                           
                         </Box>
                     </Box>
-                    <Box style={{ backgroundColor: "#001fb5", height: "60px" }}>
+                    <Box className="footer" >
                         <Box paddingTop={1}>
                             <Typography variant="subtitle2" align="center" gutterBottom style={{ color: "white", fontWeight:"bold" }} >© 2023 Copyright:</Typography>
                         </Box>

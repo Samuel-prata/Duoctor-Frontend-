@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import useLocalStorage from 'react-use-localstorage';
 import UserLogin from "../../models/UserLogin";
 import { login } from "../../services/Services";
+import './Login.css';
 
 function Copyright() {
     return (
@@ -19,36 +20,7 @@ function Copyright() {
     );
 }
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        height: '100vh',
-    },
-    image: {
-        backgroundImage: 'url(https://img.freepik.com/vetores-gratis/ilustracao-de-consulta-medica-online_88138-414.jpg?w=826&t=st=1681494604~exp=1681495204~hmac=27383699c3634a68b93d61d2deb722ae3d85c3e748a06533d970ed098d108e7c)',
-        backgroundRepeat: 'no-repeat',
-        backgroundColor:
-            theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-    },
-    paper: {
-        margin: theme.spacing(8, 4),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
-    avatar: {
-        margin: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main,
-    },
-    form: {
-        width: '100%', // Fix IE 11 issue.
-        marginTop: theme.spacing(1),
-    },
-    submit: {
-        margin: theme.spacing(3, 0, 2),
-    },
-}));
+
 
 export default function Login() {
 
@@ -90,76 +62,77 @@ export default function Login() {
         }
     }
 
-    const classes = useStyles();
-
     return (
-        <Grid container component="main" className={classes.root}>
-            <CssBaseline />
-            <Grid item xs={false} sm={4} md={7} className={classes.image} />
-            <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-                <div className={classes.paper}>
-                    <Avatar className={classes.avatar}>
-                        <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
-                        Entre
-                    </Typography>
-                    <form className={classes.form} onSubmit={onSubmit}>
-                        <TextField
-                            value={userLogin.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="email"
-                            label="Email"
-                            name="usuario"
-                            autoComplete="email"
-                            autoFocus
-                        />
-                        <TextField
-                            value={userLogin.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="senha"
-                            label="Senha"
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
-                        />
-                        <FormControlLabel
-                            control={<Checkbox value="remember" color="primary" />}
-                            label="Me lembre"
-                        />
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            className={classes.submit}
-                        >
+    
+        <Grid container>
+            <Grid container component="main" className="root">
+                <Grid item xs={6} className="image" />
+                <Grid item xs={6} className="paper" justifyContent="center" >
+                    <Box paddingX={10}>
+                        {/* <Avatar className="avatar">
+                            <LockOutlinedIcon style={{ color: 'blue' }}/>
+                        </Avatar> */}
+                        <Typography component="h1" variant="h3" align="center" className="txtEntrar">
                             Entre
-                        </Button>
-                        <Grid container>
-                            <Grid item xs>
-                                <Link to="#">
-                                    Esqueceu a senha?
-                                </Link>
+                        </Typography>
+                        <form className='form' onSubmit={onSubmit}>
+                            <TextField
+                                value={userLogin.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="email"
+                                label="Email"
+                                name="usuario"
+                                autoComplete="email"
+                                autoFocus
+                            />
+                            <TextField
+                                value={userLogin.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="senha"
+                                label="Senha"
+                                type="password"
+                                id="password"
+                                autoComplete="current-password"
+                            />
+                            <FormControlLabel
+                                control={<Checkbox value="remember" color="primary" />}
+                                label="Lembre de mim"
+                                className="checkbox"
+                            />
+                            <Button
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                color="primary"
+                                className="submit"
+                            >
+                                Entre
+                            </Button>
+                            <Grid container className="linksAjuda">
+                                <Grid item xs>
+                                    <Link to="#">
+                                        Esqueceu a senha?
+                                    </Link>
+                                </Grid>
+                                <Grid item>
+                                    <Link to="/cadastro">
+                                        {"Não tem uma conta? Cadastre-se"}
+                                    </Link>
+                                </Grid>
                             </Grid>
-                            <Grid item>
-                                <Link to="/cadastro">
-                                    {"Não tem uma conta? Cadastre-se"}
-                                </Link>
-                            </Grid>
-                        </Grid>
-                        <Box mt={5}>
-                            <Copyright />
-                        </Box>
-                    </form>
-                </div>
-            </Grid>
+                            <Box mt={5}>
+
+                            </Box>
+                        </form>
+                    </Box>
+                </Grid>
+            </Grid >
         </Grid>
     );
 }

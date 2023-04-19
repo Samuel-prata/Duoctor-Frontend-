@@ -10,22 +10,23 @@ import TextField from '@material-ui/core/TextField';
 
 
 function Navbar() {
+    let log;
     return (
         <>
             <div className="root">
-                <AppBar position="static" className="appBar" style={{background:"#001fb5"}}>
+                <AppBar position="static" className="appBar">
                     <Toolbar>
-                        <IconButton edge="start" className="menuButton" aria-label="menu" style={{color: "white", fontWeight:"bold"}} >
+                        <IconButton edge="start" className="menuButton" aria-label="menu" >
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h6" className="title">
                            Home
                         </Typography>
-                        <Button  className="options" style={{ color: "white", fontWeight: "bold", fontFamily: "arial sans serif" }}>Sobre</Button>
-                        <Button className="options" style={{ color: "white ", fontWeight: "bold", fontFamily: "arial sans serif" }}>Quero pedir ajuda</Button>
-                        <Button className="options"  style={{ color: "white ", fontWeight: "bold", fontFamily: "arial sans serif" }}>Quero ser um doador</Button>
+                        <Button  className="options">Sobre</Button>
+                        <Button className="options">Quero pedir ajuda</Button>
+                        <Button className="options">Quero ser um doador</Button>
                         <Link to= '/entrar'>
-                        <Button className="options" style={{ color: "white ", fontWeight: "bold" , fontFamily: "arial sans serif"}}>Entrar</Button>
+                        <Button className="options">Sair</Button>
                         </Link>
                         
                        

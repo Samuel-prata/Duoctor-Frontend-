@@ -10,7 +10,10 @@ import { Height } from "@material-ui/icons";
 import './Home.css';
 
 function Home() {
+
+
     return (
+        
         <>
             <Grid container  direction="row" justifyContent="center" alignItems="center" style={{ backgroundColor: "white" }} >
                 <Grid item alignItems="center" xs={6}>

@@ -13,6 +13,7 @@ import './App.css'
 import CadastroUsuario from './pages/cadastroUsuario/CadastroUsuario'
 
 
+
 function App() {
    return (
       <>
@@ -23,7 +24,7 @@ function App() {
             <Routes>
                <Route path='/' element={<Login />} />
                <Route path='/entrar' element={<Login />} />
-               <Route path='/home' element={<Home />} />
+               <Route path='/home' element={<Home/>}  />
                <Route path='/sobre' element={<Sobre />} />
                <Route path='/cadastro' element={<CadastroUsuario />} />
             </Routes>
