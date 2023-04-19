@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, Grid, Typography } from "@material-ui/core";
+import {Grid, Typography} from "@material-ui/core";
+import {Box} from "@mui/material"
 import GitHubIcon from "@material-ui/icons/GitHub";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
@@ -22,7 +23,7 @@ function Footer() {
                           
                         </Box>
                     </Box>
-                    <Box style={{ backgroundColor: "#63aff7", height: "60px" }}>
+                    <Box style={{ backgroundColor: "#001fb5", height: "60px" }}>
                         <Box paddingTop={1}>
                             <Typography variant="subtitle2" align="center" gutterBottom style={{ color: "white", fontWeight:"bold" }} >© 2023 Copyright:</Typography>
                         </Box>

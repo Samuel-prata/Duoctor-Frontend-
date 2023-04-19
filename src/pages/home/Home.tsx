@@ -1,14 +1,15 @@
 import React from "react";
 
 //importação do Material UI
-import { Grid, Box, Typography, Button } from "@material-ui/core";
+import { Grid, Typography, Button } from "@material-ui/core";
+import {Box} from "@mui/material"
 import { Height } from "@material-ui/icons";
 
 
 //importação do CSS
 import './Home.css';
 
-function Inicio() {
+function Home() {
     return (
         <>
             <Grid container  direction="row" justifyContent="center" alignItems="center" style={{ backgroundColor: "white" }} >
@@ -31,7 +32,7 @@ function Inicio() {
                     </Box>
                 </Grid>
                 <Grid item xs={6} >
-                    <img src="src\img\Duoctor.png" alt="" width="500px" height="500px" />
+                    <img src="src/assets/img/Duoctor.png" alt="" width="500px" height="500px" />
                 </Grid>
                 <Grid xs={12} style={{ backgroundColor: "white" }}>
                 </Grid>
@@ -42,4 +43,4 @@ function Inicio() {
     );
 }
 
-export default Inicio;
+export default Home;

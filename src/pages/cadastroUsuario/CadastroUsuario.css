@@ -1,0 +1,27 @@
+.imagem2 {
+    background-image: url("src/assets/img/Login-rafiki.svg");
+    background-repeat: no-repeat;
+    width: 100vh;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.textos2 {
+    font-weight: bold !important;
+}
+
+.btnCancelar {
+    border-color: black !important;
+    background-color: rgb(232, 108, 108) !important; 
+    color: white !important; 
+    font-weight: bold !important;
+    margin-right: 20px !important;
+}
+
+.btnLogin {
+    border-color: white !important;
+    background-color: #31d279 !important; 
+    color: white !important; 
+    font-weight: bold !important;
+}

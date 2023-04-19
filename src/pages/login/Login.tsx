@@ -1,25 +1,18 @@
-import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Paper from '@material-ui/core/Paper';
-import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
+import { Box, Button } from "@mui/material"
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
+import { Grid, Typography, TextField, Avatar, CssBaseline, Paper, Checkbox, FormControlLabel } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import React, { useState, useEffect, ChangeEvent } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import useLocalStorage from 'react-use-localstorage';
+import UserLogin from "../../models/UserLogin";
+import { login } from "../../services/Services";
 
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Duoctor
-            </Link>{' '}
+            Duoctor
             {new Date().getFullYear()}
             {'.'}
         </Typography>
@@ -57,7 +50,46 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SignInSide() {
+export default function Login() {
+
+    let navigate = useNavigate();
+    const [token, setToken] = useLocalStorage('token');
+    const [userLogin, setUserLogin] = useState<UserLogin>(
+        {
+            id: 0,
+            nome: '',
+            usuario: '',
+            senha: '',
+            foto: '',
+            token: ''
+        }
+    )
+
+    function updatedModel(e: ChangeEvent<HTMLInputElement>) {
+
+        setUserLogin({
+            ...userLogin,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    useEffect(() => {
+        if (token != '') {
+            navigate('/home')
+        }
+    }, [token])
+
+    async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
+        e.preventDefault();
+        try {
+            await login(`/usuarios/logar`, userLogin, setToken)
+
+            alert('Usuário logado com sucesso!');
+        } catch (error) {
+            alert('Dados do usuário inconsistentes. Erro ao logar!');
+        }
+    }
+
     const classes = useStyles();
 
     return (
@@ -72,19 +104,21 @@ export default function SignInSide() {
                     <Typography component="h1" variant="h5">
                         Entre
                     </Typography>
-                    <form className={classes.form} noValidate>
+                    <form className={classes.form} onSubmit={onSubmit}>
                         <TextField
+                            value={userLogin.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
                             variant="outlined"
                             margin="normal"
                             required
                             fullWidth
                             id="email"
                             label="Email"
-                            name="email"
+                            name="usuario"
                             autoComplete="email"
                             autoFocus
                         />
                         <TextField
+                            value={userLogin.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
                             variant="outlined"
                             margin="normal"
                             required
@@ -110,18 +144,18 @@ export default function SignInSide() {
                         </Button>
                         <Grid container>
                             <Grid item xs>
-                                <Link href="#" variant="body2">
+                                <Link to="#">
                                     Esqueceu a senha?
                                 </Link>
                             </Grid>
                             <Grid item>
-                                <Link href="/cadastro" variant="body2">
+                                <Link to="/cadastro">
                                     {"Não tem uma conta? Cadastre-se"}
                                 </Link>
                             </Grid>
                         </Grid>
                         <Box mt={5}>
-                            <Copyright  />
+                            <Copyright />
                         </Box>
                     </form>
                 </div>

@@ -1,6 +1,6 @@
 import React from "react";
-import { Grid } from "@mui/material";
-import { Box, Typography } from '@material-ui/core';
+import {Typography } from '@material-ui/core';
+import {Box, Grid} from "@mui/material"
 
 
 function Sobre() {
