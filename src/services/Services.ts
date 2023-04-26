@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const api = axios.create({
-    baseURL: 'https://duoctor.onrender.com/'
+    baseURL: 'https://duoctor.onrender.com'
 })
 
 export const cadastroUsuario = async (url: any, dados: any, setDado: any) => {
@@ -20,16 +20,16 @@ export const post = async (url: any, dados: any, setDado: any, header: any) => {
 
 }
 
-export const busca = async (url: any, setDado: any, header: any) => {
-    const resposta = await api.get(url, header)
+export const busca = async (url: any, setDado: any, headers: any) => {
+    const resposta = await api.get(url, headers)
     setDado(resposta.data)
 }
 
-export const buscaId = async (url: any, setDado: any, header: any) => {
-    const resposta = await api.get(url, header)
+export const buscaId = async (url: any, setDado: any, headers: any) => {
+    const resposta = await api.get(url, headers)
     setDado(resposta.data)
 }
-export const atualizar = async (url: any, dados: any, setDado: any, headers: any) => {
+export const put = async (url: any, dados: any, setDado: any, headers: any) => {
     const resposta = await api.put(url, dados, headers)
     setDado(resposta.data)
 }
@@ -39,7 +39,7 @@ export const deletar = async (url: any, headers: any) => {
 
 }
 
-export const put = async (url: any, dados: any, setDado: any, header: any) => {
-    const resposta = await api.put(url,dados, header)
-    setDado(resposta.data)
-}
+// export const put = async (url: any, dados: any, setDado: any, header: any) => {
+//     const resposta = await api.put(url,dados, header)
+//     setDado(resposta.data.token)
+// }

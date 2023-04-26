@@ -1,8 +1,0 @@
-.btn-nao{
-    background-color: rgb(255, 0, 0);
-}
-.btn-nao:hover{
-    background-color: rgba(0, 0, 0, 0.213);
-    box-shadow: 1px;
-    transition: 0.5s;
-}

@@ -1,9 +1,9 @@
 interface Produtos {
-    id: 0,	
-    nome: '',	
-    preco: '',
-    quantidade: '',	
-    descricao:''
+    id: number,
+    nome: string,
+    preco: string,
+    quantidade: string,
+    descricao: string
 }
 
 export default Produtos;

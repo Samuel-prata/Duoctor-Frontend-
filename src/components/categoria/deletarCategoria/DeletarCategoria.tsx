@@ -1,22 +1,18 @@
 import { Box, Button, Card, CardActions, CardContent, Typography } from "@mui/material";
-import './DeletarProdutos.css'
+import './DeletarCategoria.css'
 import { useNavigate, useParams } from "react-router-dom";
 import useLocalStorage from "react-use-localstorage";
 import { useEffect, useState } from 'react';
-import Produtos from "../../../../models/Produtos";
+import {  buscaId, deletar } from "../../../services/Services";
+import Categoria from "../../../models/Categoria";
+import React, { ChangeEvent } from 'react';
 
 
-export default function DeletarProdutos() {
+export default function DeletarCategoria() {
     let navigate = useNavigate()
-    const {id}  = useParams<{ id: string}>();
+    const { id } = useParams<{ id: string }>();
     const [token, setToken] = useLocalStorage('token')
-    const [prod, setProd] = useState<Produtos>({
-        id: 0,	
-        nome: '',	
-        preco: '',
-        quantidade: '',	
-        descricao:''
-    })
+    const [categoria, setCategoria] = useState<Categoria>()
 
     useEffect(() => {
         if (token === '') {
@@ -29,11 +25,34 @@ export default function DeletarProdutos() {
         if (id !== undefined) {
             findById(id)
         }
-    },[id])
+    }, [id])
 
     async function findById(id: string) {
-        await 
+        await buscaId(`/categoria/${id}`, setCategoria, {
+            headers: {
+                'Authorization': token
+            }
+        })
     }
+
+    function sim() {
+        deletar(`/categoria/${id}`, {
+            headers: {
+                'Authorization': token
+            }
+        })
+        alert('Categoria deletada com sucesso!')
+        back()
+    }
+
+    function nao() {
+        back()
+    }
+
+    function back() {
+        navigate('/categorias')
+    }
+
 
     return (
         <>
@@ -42,22 +61,22 @@ export default function DeletarProdutos() {
                     <CardContent>
                         <Box justifyContent="center">
                             <Typography color="textSecondary" gutterBottom>
-                                Deseja deletar a postagem:
+                                Deseja deletar a Catergoria;
                             </Typography>
                             <Typography color="textSecondary">
-                                Postagem escolhida
+                                {categoria?.descricao}
                             </Typography>
                         </Box>
                     </CardContent>
                     <CardActions>
                         <Box display="flex" justifyContent="start" ml={1.0} mb={2} >
                             <Box mx={2}>
-                                <Button variant="contained" className="marginLeft" size='large' color="primary">
+                                <Button onClick={sim} variant="contained" className="marginLeft" size='large' color="primary">
                                     Sim
                                 </Button>
                             </Box>
                             <Box mx={2}>
-                                <Button variant="contained" className="btn-nao" size='large'>
+                                <Button onClick={nao} variant="contained" className="btn-nao" size='large'>
                                     Não
                                 </Button>
                             </Box>

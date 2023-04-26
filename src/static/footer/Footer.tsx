@@ -1,18 +1,16 @@
 import React from "react";
 import {Grid, Typography} from "@material-ui/core";
 import {Box} from "@mui/material"
-import GitHubIcon from "@material-ui/icons/GitHub";
 import InstagramIcon from "@material-ui/icons/Instagram";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import "./Footer.css"
 
 function Footer() {
     return (
         <>
-            <Grid container direction="row" justifyContent="center" alignItems="center">
+            <Grid container direction="row" justifyContent="flex-end" alignItems="center">
                 <Grid alignItems="center" item xs={12}>
                     <Box className="redesSociais">
-                        <Box paddingTop={1} display="flex" alignItems="center" justifyContent="center">
+                        <Box marginTop={20} display="flex" alignItems="center" justifyContent="center">
                             <Typography variant="h5" align="center" gutterBottom style={{ color: "black" }}>Confira nossa rede social: </Typography>
                         </Box>
                         <Box display="flex" alignItems="center" justifyContent="center">
