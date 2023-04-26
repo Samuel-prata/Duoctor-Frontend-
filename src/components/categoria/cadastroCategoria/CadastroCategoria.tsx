@@ -20,7 +20,7 @@ function CadastroCategoria() {
     })
 
     useEffect(() => {
-        if (token == "") {
+        if (token === "") {
             alert("Você precisa estar logado")
             navigate("/login")
 
@@ -34,7 +34,7 @@ function CadastroCategoria() {
     }, [id])
 
     async function findById(id: string) {
-        buscaId(`/categorias/${id}`, setCategorias, {
+        buscaId(`/categoria/${id}`, setCategorias, {
             headers: {
                 'Authorization': token
             }
@@ -63,7 +63,8 @@ function CadastroCategoria() {
                         'Authorization': token
                     }
                 })
-                alert('Categoria atualizado com sucesso');
+                alert('Categoria atualizada com sucesso');
+                back()
 
             } catch (error) {
                 console.log(`Error: ${error}`)
@@ -78,7 +79,8 @@ function CadastroCategoria() {
                         'Authorization': token
                     }
                 })
-                alert('Categoria cadastrado com sucesso');
+                alert('Categoria cadastrada com sucesso');
+                back()
 
             } catch (error) {
                 console.log(`Error: ${error}`)

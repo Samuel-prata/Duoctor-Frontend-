@@ -2,11 +2,13 @@
     flex-grow: 1;
     font-family: Arial, Helvetica, sans-serif !important;
 }
-.menuButton{
+
+.menuButton {
     color: white !important;
-     font-weight:bold !important;
+    font-weight: bold !important;
 }
-.menuButton:hover{
+
+.menuButton:hover {
     background-color: white !important;
     color: black !important;
 }
@@ -14,9 +16,15 @@
 .appBar {
     background: linear-gradient(90deg, rgba(0, 31, 181, 1) 0%, rgba(99, 175, 247, 1) 100%);
 }
-.options{
+
+.options {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold !important;
     color: white !important;
 }
 
+.homeLink {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}

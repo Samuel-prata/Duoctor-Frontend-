@@ -1,6 +1,4 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 //importar as functions
 import Navbar from './static/navbar/Navbar'
 import Footer from './static/footer/Footer'
@@ -13,6 +11,8 @@ import './App.css'
 import CadastroUsuario from './pages/cadastroUsuario/CadastroUsuario'
 import ListagemCategoria from './components/categoria/listagemCategoria/ListagemCategoria'
 import CadastroCategoria from './components/categoria/cadastroCategoria/CadastroCategoria'
+import DeletarCategoria from './components/categoria/deletarCategoria/DeletarCategoria';
+
 
 
 
@@ -31,6 +31,10 @@ function App() {
                <Route path='/cadastro' element={<CadastroUsuario />} />
                <Route path='/categorias' element={<ListagemCategoria />} />
                <Route path='/formularioCategoria' element={<CadastroCategoria />} />
+               <Route path='/formularioCategoria/:id' element={<CadastroCategoria />} />
+               <Route path='/deletarCategoria' element={<DeletarCategoria />} />
+               <Route path='/deletarCategoria/:id' element={<DeletarCategoria />} />
+
             </Routes>
 
             <Footer />
