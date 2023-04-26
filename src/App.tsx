@@ -11,6 +11,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Sobre from './pages/sobre/Sobre'
 import './App.css'
 import CadastroUsuario from './pages/cadastroUsuario/CadastroUsuario'
+import DeletarProdutos from './assets/components/produtos/deletarProdutos/DeletarProdutos'
 
 
 
@@ -27,6 +28,8 @@ function App() {
                <Route path='/home' element={<Home/>}  />
                <Route path='/sobre' element={<Sobre />} />
                <Route path='/cadastro' element={<CadastroUsuario />} />
+               <Route path='/deletarProduto' element={<DeletarProdutos />} />
+
             </Routes>
 
             <Footer />
