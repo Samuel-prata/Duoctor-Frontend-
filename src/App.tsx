@@ -11,6 +11,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Sobre from './pages/sobre/Sobre'
 import './App.css'
 import CadastroUsuario from './pages/cadastroUsuario/CadastroUsuario'
+import ListagemCategoria from './components/categoria/listagemCategoria/ListagemCategoria'
+import CadastroCategoria from './components/categoria/cadastroCategoria/CadastroCategoria'
 import DeletarProdutos from './assets/components/produtos/deletarProdutos/DeletarProdutos'
 
 
@@ -28,6 +30,8 @@ function App() {
                <Route path='/home' element={<Home/>}  />
                <Route path='/sobre' element={<Sobre />} />
                <Route path='/cadastro' element={<CadastroUsuario />} />
+               <Route path='/categorias' element={<ListagemCategoria />} />
+               <Route path='/formularioCategoria' element={<CadastroCategoria />} />
                <Route path='/deletarProduto' element={<DeletarProdutos />} />
 
             </Routes>
