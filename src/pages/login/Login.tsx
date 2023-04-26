@@ -1,7 +1,5 @@
 import { Box, Button } from "@mui/material"
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Grid, Typography, TextField, Avatar, CssBaseline, Paper, Checkbox, FormControlLabel } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useLocalStorage from 'react-use-localstorage';
@@ -33,7 +31,8 @@ export default function Login() {
             usuario: '',
             senha: '',
             foto: '',
-            token: ''
+            token: '',
+            tipo:''
         }
     )
 
@@ -52,7 +51,7 @@ export default function Login() {
     }, [token])
 
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
-        e.preventDefault();
+        e.preventDefault();//não atualizar a página
         try {
             await login(`/usuarios/logar`, userLogin, setToken)
 

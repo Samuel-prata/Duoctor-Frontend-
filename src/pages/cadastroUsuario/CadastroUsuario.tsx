@@ -15,7 +15,8 @@ function CadastroUsuario() {
             nome: '',
             usuario: '',
             foto: '',
-            senha: ''
+            senha: '',
+            tipo: ''
         })
 
     const [userResult, setUserResult] = useState<User>(
@@ -24,7 +25,8 @@ function CadastroUsuario() {
             nome: '',
             usuario: '',
             foto: '',
-            senha: ''
+            senha: '',
+            tipo:''
         })
 
     useEffect(() => {
