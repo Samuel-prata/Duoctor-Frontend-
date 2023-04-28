@@ -6,6 +6,9 @@ import useLocalStorage from 'react-use-localstorage';
 import UserLogin from "../../models/UserLogin";
 import { login } from "../../services/Services";
 import './Login.css';
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { addToken } from "../../store/tokens/Actions";
 
 function Copyright() {
     return (
@@ -23,7 +26,8 @@ function Copyright() {
 export default function Login() {
 
     let navigate = useNavigate();
-    const [token, setToken] = useLocalStorage('token');
+    const dispatch = useDispatch();
+    const [token, setToken] = useState('')
     const [userLogin, setUserLogin] = useState<UserLogin>(
         {
             id: 0,
@@ -45,19 +49,41 @@ export default function Login() {
     }
 
     useEffect(() => {
-        if (token != '') {
+        if (token !== "") {
+            dispatch(addToken(token))
             navigate('/home')
         }
     }, [token])
 
+
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault();//não atualizar a página
+
         try {
             await login(`/usuarios/logar`, userLogin, setToken)
 
-            alert('Usuário logado com sucesso!');
+            toast.success('Usuário logado com sucesso', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: 'colored',
+                progress: undefined,
+            })
+
         } catch (error) {
-            alert('Dados do usuário inconsistentes. Erro ao logar!');
+            toast.error('Dados do usuário inconsistentes. Erro ao logar!', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: 'colored',
+                progress: undefined,
+            })
         }
     }
 

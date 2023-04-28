@@ -13,13 +13,20 @@ import ListagemCategoria from './components/categoria/listagemCategoria/Listagem
 import CadastroCategoria from './components/categoria/cadastroCategoria/CadastroCategoria'
 import DeletarCategoria from './components/categoria/deletarCategoria/DeletarCategoria';
 import CadastroProdutos from './components/produtos/cadastroProdutos/CadastroProdutos';
+import { Provider } from 'react-redux';
+import store from './store/store';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ListagemProdutos from './components/produtos/listagemProdutos/ListagemProdutos';
+import DeletarProdutos from './components/produtos/deletarProdutos/DeletarProdutos';
 
 
 
 
 function App() {
    return (
-      <>
+      <Provider store={store}>
+      <ToastContainer />
          <BrowserRouter>
 
             <Navbar />
@@ -36,13 +43,17 @@ function App() {
                <Route path='/deletarCategoria' element={<DeletarCategoria />} />
                <Route path='/deletarCategoria/:id' element={<DeletarCategoria />} />
                <Route path='/formularioProduto' element={<CadastroProdutos />} />
+               <Route path='/produtos' element={<ListagemProdutos />} />
+               <Route path='/formularioProduto/:id' element={<CadastroProdutos />} />
+               <Route path='/deletarProdutos' element={<DeletarProdutos />} />
+               <Route path='/deletarProdutos/:id' element={<DeletarProdutos />} />
 
             </Routes>
 
             <Footer />
             
          </BrowserRouter>
-      </>
+         </Provider>
    );
 }
 

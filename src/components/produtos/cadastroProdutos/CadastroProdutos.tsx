@@ -10,9 +10,8 @@ import { useSelector } from 'react-redux';
 import {toast} from 'react-toastify';
 
 function CadastroProdutos() {
-
-    <h1>Ola mundo</h1>
-  /*  let navigate = useNavigate();
+  
+    let navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
     const [categorias, setCategorias] = useState<Categoria[]>([])
     const token = useSelector<TokenState, TokenState["tokens"]>(
@@ -45,8 +44,8 @@ function CadastroProdutos() {
     const [produtos, setProdutos] = useState<Produtos>({
         id: 0,
         nome: '',
-        preco: '',
-        quantidade: '',
+        preco: 0,
+        quantidade: 0,
         descricao: '',
         categoria: null
     })
@@ -56,7 +55,7 @@ function CadastroProdutos() {
             ...produtos,
             categoria: categoria
         })
-    }, [categorias])
+    }, [categoria])
 
     useEffect(() => {
         getCategorias()
@@ -66,7 +65,7 @@ function CadastroProdutos() {
     }, [id])
 
     async function getCategorias() {
-        await busca("/categorias", setCategorias, {
+        await busca("/categoria", setCategorias, {
             headers: {
                 'Authorization': token
             }
@@ -126,6 +125,7 @@ function CadastroProdutos() {
 
         } else {
             try {
+                console.log(produtos)
                 post(`/produtos`, produtos, setProdutos, {
                     headers: {
                         'Authorization': token
@@ -178,7 +178,7 @@ function CadastroProdutos() {
 
                         labelId="demo-simple-select-helper-label"
                         id="demo-simple-select-helper"
-                        onChange={(e) => buscaId(`/categorias/${e.target.value}`, setCategorias, {
+                        onChange={(e) => buscaId(`/categoria/${e.target.value}`, setCategoria, {
                             headers: {
                                 'Authorization': token
                             }
@@ -197,6 +197,6 @@ function CadastroProdutos() {
                 </FormControl>
             </form>
         </Container> 
-    ) */
+    ) 
 }
 export default CadastroProdutos;

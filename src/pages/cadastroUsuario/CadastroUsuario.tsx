@@ -5,8 +5,10 @@ import './CadastroUsuario.css';
 import { cadastroUsuario } from "../../services/Services";
 import { Link, useNavigate } from "react-router-dom";
 import User from "../../models/User";
+import { toast } from "react-toastify";
 
 function CadastroUsuario() {
+
     let navigate = useNavigate();
     const [confirmarSenha, setConfirmarSenha] = useState<String>("")
     const [user, setUser] = useState<User>(
@@ -52,10 +54,37 @@ function CadastroUsuario() {
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
         if (confirmarSenha === user.senha) {
-           await cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
-            alert('Usuario cadastrado com sucesso')
+           try {
+                await cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
+                toast.success('Usuário cadastrado com sucesso', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: 'colored',
+                    progress: undefined,
+                })
+                
+            } catch (error) {
+                console.log(`Error: ${error}`)
+                alert("Erro ao cadastrar o Usuário")
+            }
         } else {
-            alert('Dados inconsistentes. Favor verificar as informações de cadastro.')
+            toast.error('Dados inconsistentes. Favor verificar as informações de cadastro', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: 'colored',
+                progress: undefined,
+            })
+
+            setUser({ ...user, senha: "" })
+            setConfirmarSenha("")
         }
     }
     return (

@@ -6,18 +6,34 @@ import { useEffect, useState } from 'react';
 import {  buscaId, deletar } from "../../../services/Services";
 import Categoria from "../../../models/Categoria";
 import React, { ChangeEvent } from 'react';
+import { TokenState } from "../../../store/tokens/TokensReducer";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 
 export default function DeletarCategoria() {
     let navigate = useNavigate()
     const { id } = useParams<{ id: string }>();
-    const [token, setToken] = useLocalStorage('token')
+    const token = useSelector<TokenState, TokenState["tokens"]>(
+        (state) =>state.tokens
+    );
+
     const [categoria, setCategoria] = useState<Categoria>()
 
     useEffect(() => {
-        if (token === '') {
-            alert('Você precisa estar logado!')
-            navigate('/login')
+        if (token == "") {
+            toast.error('Você precisa estar logado', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: 'colored',
+                progress: undefined,
+            })
+            navigate("/login")
+
         }
     }, [token])
 
@@ -41,9 +57,19 @@ export default function DeletarCategoria() {
                 'Authorization': token
             }
         })
-        alert('Categoria deletada com sucesso!')
-        back()
+        toast.success('Categoria deletada com sucesso', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            theme: 'colored',
+            progress: undefined,
+        })
     }
+        back()
+    
 
     function nao() {
         back()
