@@ -1,24 +1,21 @@
-import { Box, Button, Card, CardActions, CardContent, Typography } from "@mui/material";
-import './DeletarCategoria.css'
-import { useNavigate, useParams } from "react-router-dom";
-import useLocalStorage from "react-use-localstorage";
-import { useEffect, useState } from 'react';
-import {  buscaId, deletar } from "../../../services/Services";
-import Categoria from "../../../models/Categoria";
-import React, { ChangeEvent } from 'react';
-import { TokenState } from "../../../store/tokens/TokensReducer";
-import { useSelector } from "react-redux";
-import { toast } from "react-toastify";
+import React, { useEffect, useState } from 'react'
+import { Typography, Button, Card, CardActions, CardContent } from "@material-ui/core"
+import { Box } from '@mui/material';
+import './DeletarProdutos.css';
+import { buscaId, deletar} from '../../../services/Services';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/TokensReducer';
+import { toast } from 'react-toastify';
+import Produtos from '../../../models/Produtos';
 
-
-export default function DeletarCategoria() {
-    let navigate = useNavigate()
+function DeletarProdutos() {
+    let navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) =>state.tokens
     );
-
-    const [categoria, setCategoria] = useState<Categoria>()
+    const [produtos, setProdutos] = useState<Produtos>()
 
     useEffect(() => {
         if (token == "") {
@@ -32,7 +29,7 @@ export default function DeletarCategoria() {
                 theme: 'colored',
                 progress: undefined,
             })
-            navigate("/login")
+            navigate("/entrar")
 
         }
     }, [token])
@@ -44,7 +41,7 @@ export default function DeletarCategoria() {
     }, [id])
 
     async function findById(id: string) {
-        await buscaId(`/categoria/${id}`, setCategoria, {
+        buscaId(`/produtos/${id}`, setProdutos, {
             headers: {
                 'Authorization': token
             }
@@ -52,12 +49,13 @@ export default function DeletarCategoria() {
     }
 
     function sim() {
-        deletar(`/categoria/${id}`, {
+        navigate('/produtos')
+        deletar(`/produtos/${id}`, {
             headers: {
                 'Authorization': token
             }
-        })
-        toast.success('Categoria deletada com sucesso', {
+        });
+        toast.success('Produto deletado com sucesso', {
             position: "top-right",
             autoClose: 2000,
             hideProgressBar: false,
@@ -68,31 +66,25 @@ export default function DeletarCategoria() {
             progress: undefined,
         })
     }
-        back()
-    
 
     function nao() {
-        back()
+        navigate('/produto')
     }
-
-    function back() {
-        navigate('/categorias')
-    }
-
 
     return (
         <>
             <Box m={2}>
-                <Card variant="outlined">
+                <Card variant="outlined" >
                     <CardContent>
                         <Box justifyContent="center">
                             <Typography color="textSecondary" gutterBottom>
-                                Deseja deletar a Catergoria;
+                                Deseja deletar o Produto:
                             </Typography>
-                            <Typography color="textSecondary">
-                                {categoria?.descricao}
+                            <Typography color="textSecondary" >
+                                {produtos?.nome}
                             </Typography>
                         </Box>
+
                     </CardContent>
                     <CardActions>
                         <Box display="flex" justifyContent="start" ml={1.0} mb={2} >
@@ -101,8 +93,8 @@ export default function DeletarCategoria() {
                                     Sim
                                 </Button>
                             </Box>
-                            <Box mx={2}>
-                                <Button onClick={nao} variant="contained" className="btn-nao" size='large'>
+                            <Box>
+                                <Button onClick={nao} variant="contained" size='large' color="secondary">
                                     Não
                                 </Button>
                             </Box>
@@ -113,3 +105,4 @@ export default function DeletarCategoria() {
         </>
     );
 }
+export default DeletarProdutos;

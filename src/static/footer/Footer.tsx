@@ -3,8 +3,14 @@ import {Grid, Typography} from "@material-ui/core";
 import {Box} from "@mui/material"
 import InstagramIcon from "@material-ui/icons/Instagram";
 import "./Footer.css"
+import { useSelector } from "react-redux";
+import { TokenState } from "../../store/tokens/TokensReducer";
 
 function Footer() {
+    const token = useSelector<TokenState, TokenState["tokens"]>(
+        (state) => state.tokens
+    );
+    
     return (
         <>
             <Grid container direction="row" justifyContent="flex-end" alignItems="center">
