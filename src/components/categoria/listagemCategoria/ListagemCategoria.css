@@ -19,9 +19,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #63aff7 !important;
+    background: #337efe !important;
     color: white !important;
     font-weight: bold !important;
+}
+.show-card:hover{
+  width: 35%;
+  height: 310px;
+  box-shadow: black 2rem;
 }
 .card-conteudo{
     
