@@ -1,17 +1,18 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { Container, Typography, TextField, Button, Select, InputLabel, MenuItem, FormControl, FormHelperText } from "@material-ui/core"
-import './CadastroPost.css';
+import './CadastroProdutos.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import Categoria from '../../../models/Categoria';
 import Produtos from '../../../models/Produtos';
 import { busca, buscaId, post, put } from '../../../services/Services';
-import { TokenState } from '../../store/tokens/TokensReducer'
+import { TokenState } from '../../../store/tokens/TokensReducer';
 import { useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
+import {toast} from 'react-toastify';
 
 function CadastroProdutos() {
 
-    let navigate = useNavigate();
+    <h1>Ola mundo</h1>
+  /*  let navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
     const [categorias, setCategorias] = useState<Categoria[]>([])
     const token = useSelector<TokenState, TokenState["tokens"]>(
@@ -30,12 +31,12 @@ function CadastroProdutos() {
                 theme: 'colored',
                 progress: undefined,
             })
-            navigate("/login")
+            navigate("/entrar")
 
         }
     }, [token])
 
-    const [categorias, setCategorias] = useState<Categoria>(
+    const [categoria, setCategoria] = useState<Categoria>(
         {
             id: 0,
             tipo: '',
@@ -53,14 +54,14 @@ function CadastroProdutos() {
     useEffect(() => {
         setProdutos({
             ...produtos,
-            categorias: categorias
+            categoria: categoria
         })
     }, [categorias])
 
     useEffect(() => {
         getCategorias()
         if (id !== undefined) {
-            findByIdPostagem(id)
+            findByIdProdutos(id)
         }
     }, [id])
 
@@ -72,20 +73,20 @@ function CadastroProdutos() {
         })
     }
 
-    async function findByIdPostagem(id: string) {
-        await buscaId(`/postagens/${id}`, setPostagem, {
+    async function findByIdProdutos(id: string) {
+        await buscaId(`/produtos/${id}`, setProdutos, {
             headers: {
                 'Authorization': token
             }
         })
     }
 
-    function updatedPostagem(e: ChangeEvent<HTMLInputElement>) {
+    function updatedProdutos(e: ChangeEvent<HTMLInputElement>) {
 
         setProdutos({
             ...produtos,
             [e.target.name]: e.target.value,
-            categorias: categorias
+            categoria: categoria
         })
 
     }
@@ -141,7 +142,7 @@ function CadastroProdutos() {
                     progress: undefined,
                 })
             } catch (error) {
-                toast.error('Erro ao cadastrar sua postagem, tente novamente!', {
+                toast.error('Erro ao cadastrar sua produto, tente novamente!', {
                     position: "top-right",
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -159,17 +160,17 @@ function CadastroProdutos() {
     }
 
     function back() {
-        navigate('/posts')
+        navigate('/produtos')
     }
 
     return (
         <Container maxWidth="sm" className="topo">
             <form onSubmit={onSubmit}>
-                <Typography variant="h3" color="textSecondary" component="h1" align="center" >Formulário de cadastro postagem</Typography>
-                <TextField value={produtos.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)} id="nome" label="nome" variant="outlined" name="nome" margin="normal" fullWidth />
-                <TextField value={produtos.preco} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)} id="preco" label="preco" name="preco" variant="outlined" margin="normal" fullWidth />
-                <TextField value={produtos.quantidade} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)} id="quantidade" label="quantidade" name="quantidade" variant="outlined" margin="normal" fullWidth />
-                <TextField value={produtos.descricao} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)} id="descricao" label="descricao" name="descricao" variant="outlined" margin="normal" fullWidth />
+                <Typography variant="h3" color="textSecondary" component="h1" align="center" >Formulário de cadastro produto</Typography>
+                <TextField value={produtos.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProdutos(e)} id="nome" label="nome" variant="outlined" name="nome" margin="normal" fullWidth />
+                <TextField value={produtos.preco} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProdutos(e)} id="preco" label="preco" name="preco" variant="outlined" margin="normal" fullWidth />
+                <TextField value={produtos.quantidade} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProdutos(e)} id="quantidade" label="quantidade" name="quantidade" variant="outlined" margin="normal" fullWidth />
+                <TextField value={produtos.descricao} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProdutos(e)} id="descricao" label="descricao" name="descricao" variant="outlined" margin="normal" fullWidth />
 
                 <FormControl >
                     <InputLabel id="demo-simple-select-helper-label">Categorias </InputLabel>
@@ -195,7 +196,7 @@ function CadastroProdutos() {
                     </Button>
                 </FormControl>
             </form>
-        </Container>
-    )
+        </Container> 
+    ) */
 }
 export default CadastroProdutos;
