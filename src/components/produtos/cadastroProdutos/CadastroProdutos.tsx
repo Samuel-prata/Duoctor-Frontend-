@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Categoria from '../../../models/Categoria';
 import Produtos from '../../../models/Produtos';
 import { busca, buscaId, post, put } from '../../../services/Services';
-import { TokenState } from '../../../store/tokens/TokensReducer';
+import { UserState } from '../../../store/tokens/TokensReducer';
 import { useSelector } from 'react-redux';
 import {toast} from 'react-toastify';
 
@@ -14,7 +14,7 @@ function CadastroProdutos() {
     let navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
     const [categorias, setCategorias] = useState<Categoria[]>([])
-    const token = useSelector<TokenState, TokenState["tokens"]>(
+    const token = useSelector<UserState, UserState["tokens"]>(
         (state) => state.tokens
     );
 

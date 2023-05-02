@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AppBar, IconButton, Typography, Button } from "@material-ui/core"
 import Toolbar from '@material-ui/core/Toolbar'
 import MenuIcon from '@material-ui/icons/Menu';
@@ -9,19 +9,58 @@ import { ClassNames } from "@emotion/react";
 import TextField from '@material-ui/core/TextField';
 import useLocalStorage from "react-use-localstorage";
 import { useDispatch, useSelector } from "react-redux";
-import { TokenState } from "../../store/tokens/TokensReducer";
+import { UserState } from "../../store/tokens/TokensReducer";
 import { toast } from "react-toastify";
 import { addToken } from "../../store/tokens/Actions";
+import User from "../../models/User";
+import { buscaId } from "../../services/Services";
 
 
 function Navbar() {
-    const token = useSelector<TokenState, TokenState["tokens"]>(
-        (state) => state.tokens
-    );
+
     let navigate = useNavigate()
     const dispatch = useDispatch();
 
-     function goLogout() {
+    const token = useSelector<UserState, UserState["tokens"]>(
+        (state) => state.tokens
+    );
+
+    const id = useSelector<UserState, UserState["id"]>(
+        (state) => state.id
+    );
+
+    const [user, setUser] = useState<User>({
+
+        id: +id,
+        nome: '',
+        usuario: '',
+        senha: '',
+        foto: '',
+        tipo: '',
+    })
+
+    async function findById(id: string) {
+        buscaId(`/usuarios/${id}`, setUser, {
+            headers: {
+                'Authorization': token
+            }
+        })
+    }
+
+    useEffect(() =>{
+        if(id !== undefined) {
+            findById(id)
+        }
+    },[id])
+
+    useEffect(() => {
+        setUser({
+            ...user,
+            tipo: "admim"
+        })
+    }, [user])
+
+    function goLogout() {
         dispatch(addToken(''));
         toast.info('Usuário deslogado', {
             position: "top-right",
@@ -35,9 +74,10 @@ function Navbar() {
         })
         navigate('/entrar')
     }
-    return (
-        <>
-            <div className="root">
+
+    var navBarComponent 
+    if(user.tipo === 'admin') {
+        <div className="root">
                 <AppBar position="static" className="appBar">
                     <Toolbar>
                         <IconButton edge="start" className="menuButton" aria-label="menu" >
@@ -57,11 +97,11 @@ function Navbar() {
                             <Button className="options">Quero pedir ajuda</Button>
                         </Link>
 
-                        
+
                         <Link to='/formularioProduto'>
-                        <Button className="options">Quero ser um doador</Button>
+                            <Button className="options">Quero ser um doador</Button>
                         </Link>
-                        
+
                         <Link to='/entrar'>
                             <Button onClick={goLogout} className="options">Sair</Button>
                         </Link>
@@ -72,6 +112,10 @@ function Navbar() {
                 </AppBar>
             </div>
 
+    }
+    return (
+        <>
+            
         </>
     );
 }
