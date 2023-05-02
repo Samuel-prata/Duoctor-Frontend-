@@ -5,14 +5,18 @@ import './CadastroCategoria.css';
 import { buscaId, post, put} from '../../../services/Services';
 import useLocalStorage from 'react-use-localstorage';
 import Categoria from '../../../models/Categoria';
+import { TokenState } from '../../../store/tokens/TokensReducer';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 
 
 function CadastroCategoria() {
     let navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
-    const [token, setToken] = useLocalStorage('token')
-
+    const token = useSelector<TokenState, TokenState["tokens"]>(
+        (state) => state.tokens
+        );
     const [categorias, setCategorias] = useState<Categoria>({
         id: 0,
         tipo: '',
@@ -20,12 +24,20 @@ function CadastroCategoria() {
     })
 
     useEffect(() => {
-        if (token === "") {
-            alert("Você precisa estar logado")
-            navigate("/login")
-
+        if (token == "") {
+            toast.error('Você precisa estar logado', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: 'colored',
+                progress: undefined,
+            })
+            navigate("/entrar")
         }
-    }, [token])
+        }, [token])
 
     useEffect(() => {
         if (id !== undefined) {
@@ -63,13 +75,33 @@ function CadastroCategoria() {
                         'Authorization': token
                     }
                 })
-                alert('Categoria atualizada com sucesso');
+                toast.success('Categoria atualizada com sucesso', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: 'colored',
+                    progress: undefined,
+                })
+               
                 back()
 
             } catch (error) {
-                console.log(`Error: ${error}`)
-                alert("Erro, por favor verifique a quantidade minima de caracteres")
+                  console.log(`Error: ${error}`)
+                toast.error('Erro, por favor verifique a quantidade minima de caracteres', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: 'colored',
+                    progress: undefined,
+                })
             }
+
 
         } else {
 
@@ -79,15 +111,34 @@ function CadastroCategoria() {
                         'Authorization': token
                     }
                 })
-                alert('Categoria cadastrada com sucesso');
+                toast.success('Categoria cadastrada com sucesso', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: 'colored',
+                    progress: undefined,
+                })
+
                 back()
 
             } catch (error) {
                 console.log(`Error: ${error}`)
-                alert("Erro, por favor verifique a quantidade minima de caracteres")
-            }
+                toast.error('Erro, por favor verifique a quantidade minima de caracteres', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: 'colored',
+                    progress: undefined,
+                })
 
         }
+    }
 
         back()
 

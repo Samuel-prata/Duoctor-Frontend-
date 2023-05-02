@@ -8,15 +8,32 @@ import { Home } from "@material-ui/icons";
 import { ClassNames } from "@emotion/react";
 import TextField from '@material-ui/core/TextField';
 import useLocalStorage from "react-use-localstorage";
+import { useDispatch, useSelector } from "react-redux";
+import { TokenState } from "../../store/tokens/TokensReducer";
+import { toast } from "react-toastify";
+import { addToken } from "../../store/tokens/Actions";
 
 
 function Navbar() {
-    const [token, setToken] = useLocalStorage('token')
+    const token = useSelector<TokenState, TokenState["tokens"]>(
+        (state) => state.tokens
+    );
     let navigate = useNavigate()
-    function goLogout() {
-        setToken('')
-        alert('Usuario desconectado')
-        navigate('/login')
+    const dispatch = useDispatch();
+
+     function goLogout() {
+        dispatch(addToken(''));
+        toast.info('Usuário deslogado', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            theme: 'colored',
+            progress: undefined,
+        })
+        navigate('/entrar')
     }
     return (
         <>
@@ -40,7 +57,10 @@ function Navbar() {
                             <Button className="options">Quero pedir ajuda</Button>
                         </Link>
 
+                        
+                        <Link to='/formularioProduto'>
                         <Button className="options">Quero ser um doador</Button>
+                        </Link>
                         
                         <Link to='/entrar'>
                             <Button onClick={goLogout} className="options">Sair</Button>

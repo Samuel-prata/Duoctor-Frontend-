@@ -1,0 +1,18 @@
+.text-decorator-none {
+    text-decoration: none;
+}
+
+.btnDeletar {
+    border-color: black !important;
+    background-color: rgb(232, 108, 108) !important; 
+    color: white !important; 
+    font-weight: bold !important;
+    margin-right: 20px !important;
+}
+
+.btnAtualizar {
+    border-color: white !important;
+    background-color: #31d279 !important; 
+    color: white !important; 
+    font-weight: bold !important;
+}
