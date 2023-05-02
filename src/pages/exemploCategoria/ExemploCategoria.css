@@ -1,0 +1,33 @@
+
+.box-cards{
+  max-width: 100%;
+  padding: 1.5rem 0;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center ;
+  flex-wrap: wrap;
+  justify-content: space-between !important;
+  padding: 0;
+} 
+
+.show-card{
+    width: 30% !important;
+    height: 50px ;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: space-evenly;
+    flex-direction: column !important;
+    align-items: center;
+    background: #337efe !important;
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.show-card:hover{
+  width: 35%;
+  height: 310px;
+  box-shadow: black 2rem;
+}

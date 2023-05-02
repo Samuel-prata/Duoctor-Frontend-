@@ -30,11 +30,18 @@ function Navbar() {
                         <Typography variant="h6" className="title">
                             <Link to='/home' className="homeLink">Home</Link>
                         </Typography>
-                        <Button className="options">Sobre</Button>
+
+                        <Link to='/sobre'>
+                            <Button className="options">Sobre</Button>
+                        </Link>
+
+
                         <Link to='/formularioCategoria'>
                             <Button className="options">Quero pedir ajuda</Button>
                         </Link>
+
                         <Button className="options">Quero ser um doador</Button>
+                        
                         <Link to='/entrar'>
                             <Button onClick={goLogout} className="options">Sair</Button>
                         </Link>
