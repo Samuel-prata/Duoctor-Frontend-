@@ -21,44 +21,39 @@ function Navbar() {
     let navigate = useNavigate()
     const dispatch = useDispatch();
 
-    const token = useSelector<UserState, UserState["tokens"]>(
-        (state) => state.tokens
-    );
-
+    // Pega o ID guardado no Store
     const id = useSelector<UserState, UserState["id"]>(
         (state) => state.id
     );
 
-    const [user, setUser] = useState<User>({
+    // Pega o Token guardado no Store
+    const token = useSelector<UserState, UserState["tokens"]>(
+        (state) => state.tokens
+    )
 
-        id: +id,
+    const [user, setUser] = useState<User>({
+        id: +id,    // Faz uma conversão de String para Number
         nome: '',
         usuario: '',
         senha: '',
         foto: '',
-        tipo: '',
+        tipo: ''
     })
 
+    // Métedo para pegar os dados de um Usuário especifico pelo ID
     async function findById(id: string) {
-        buscaId(`/usuarios/${id}`, setUser, {
+        await buscaId(`/usuarios/${id}`, setUser, {
             headers: {
                 'Authorization': token
             }
         })
     }
 
-    useEffect(() =>{
-        if(id !== undefined) {
+    useEffect(() => {
+        if (id !== undefined) {
             findById(id)
         }
-    },[id])
-
-    useEffect(() => {
-        setUser({
-            ...user,
-            tipo: "admim"
-        })
-    }, [user])
+    }, [id])
 
     function goLogout() {
         dispatch(addToken(''));
@@ -75,9 +70,10 @@ function Navbar() {
         navigate('/entrar')
     }
 
-    var navBarComponent 
-    if(user.tipo === 'admin') {
-        <div className="root">
+    var navBarComponent
+    if (token !== "" && user.tipo === 'admin') {
+        navBarComponent =
+            <div className="root">
                 <AppBar position="static" className="appBar">
                     <Toolbar>
                         <IconButton edge="start" className="menuButton" aria-label="menu" >
@@ -94,28 +90,67 @@ function Navbar() {
 
 
                         <Link to='/formularioCategoria'>
-                            <Button className="options">Quero pedir ajuda</Button>
+                            <Button className="options">Cadastrar Categorias</Button>
                         </Link>
 
 
-                        <Link to='/formularioProduto'>
-                            <Button className="options">Quero ser um doador</Button>
+                        <Link to='/categorias'>
+                            <Button className="options">Editar Categorias</Button>
+                        </Link>
+
+                        <Link to='/produtos'>
+                            <Button className="options">Editar Produtos</Button>
                         </Link>
 
                         <Link to='/entrar'>
                             <Button onClick={goLogout} className="options">Sair</Button>
                         </Link>
 
-
-
                     </Toolbar>
                 </AppBar>
             </div>
 
+    }else{
+        if( user.tipo !== "admin"){
+            navBarComponent = 
+            <div className="root">
+            <AppBar position="static" className="appBar">
+                <Toolbar>
+                    <IconButton edge="start" className="menuButton" aria-label="menu" >
+                        <MenuIcon />
+                    </IconButton>
+
+                    <Typography variant="h6" className="title">
+                        <Link to='/home' className="homeLink">Home</Link>
+                    </Typography>
+
+                    <Link to='/sobre'>
+                        <Button className="options">Sobre</Button>
+                    </Link>
+
+
+                    <Link to='/formularioProduto'>
+                        <Button className="options">Quero pedir ajuda</Button>
+                    </Link>
+
+
+                    <Link to='/produtos'>
+                        <Button className="options">Quero ser um doador</Button>
+                    </Link>
+
+                    <Link to='/entrar'>
+                        <Button onClick={goLogout} className="options">Sair</Button>
+                    </Link>
+
+                </Toolbar>
+            </AppBar>
+        </div>
+        }
     }
+
     return (
         <>
-            
+            { navBarComponent }
         </>
     );
 }
