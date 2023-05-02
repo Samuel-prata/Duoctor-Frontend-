@@ -5,7 +5,7 @@ import './CadastroCategoria.css';
 import { buscaId, post, put} from '../../../services/Services';
 import useLocalStorage from 'react-use-localstorage';
 import Categoria from '../../../models/Categoria';
-import { TokenState } from '../../../store/tokens/TokensReducer';
+import { UserState } from '../../../store/tokens/TokensReducer';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
@@ -14,7 +14,7 @@ import { toast } from 'react-toastify';
 function CadastroCategoria() {
     let navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
-    const token = useSelector<TokenState, TokenState["tokens"]>(
+    const token = useSelector<UserState, UserState["tokens"]>(
         (state) => state.tokens
         );
     const [categorias, setCategorias] = useState<Categoria>({
