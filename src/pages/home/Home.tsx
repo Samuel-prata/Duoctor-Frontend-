@@ -2,16 +2,21 @@ import React, { useEffect } from "react";
 
 //importação do Material UI
 import { Grid, Typography, Button } from "@material-ui/core";
-import {Box} from "@mui/material"
+import { Box } from "@mui/material"
 import { Height } from "@material-ui/icons";
 
 
 //importação do CSS
 import './Home.css';
+import Slider from '../../components/Slider/Slider';
+import Sobre from "../sobre/Sobre";
+import Avatar from '../../../src/assets/img/Duoctor3.png'
+import ExemploCategoria from "../exemploCategoria/ExemploCategoria";
 import { useSelector } from "react-redux";
 import { TokenState } from "../../store/tokens/TokensReducer";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+
 
 function Home() {
     let navigate = useNavigate();
@@ -38,11 +43,15 @@ function Home() {
 
 
     return (
-        
-        <>
-            <Grid container  direction="row" justifyContent="center" alignItems="center" style={{ backgroundColor: "white" }} >
-                <Grid item alignItems="center" xs={6}>
 
+        <>
+            <Grid container direction="row" justifyContent="center" alignItems="center" style={{ backgroundColor: "#f1f3f5" }} >
+                <Grid container style={{ marginTop: "8px" }}>
+                    <Grid item xs={12}>
+                        <Slider />
+                    </Grid>
+                </Grid>
+                <Grid item alignItems="center" xs={6}>
                     <Box paddingX={20}>
                         <Typography variant="h3" gutterBottom color="textPrimary"
                             component="h3"
@@ -65,6 +74,15 @@ function Home() {
                 <Grid xs={12} style={{ backgroundColor: "white" }}>
                 </Grid>
             </Grid>
+
+            <Grid container className="info" md={12} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Sobre />
+            </Grid>
+            <Grid container className="info" md={12} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <ExemploCategoria />
+            </Grid>
+
+
 
 
         </>
