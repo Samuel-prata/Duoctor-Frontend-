@@ -1,43 +1,61 @@
-
-.box-cards{
+.box-cards {
   max-width: 100%;
   padding: 1.5rem 0;
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: center ;
+  justify-content: center;
   flex-wrap: wrap;
   justify-content: space-between !important;
   padding: 0;
-} 
-.card-container{
+}
+
+.card-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   justify-content: space-between;
 }
 
-.show-card{
-    width: 190px !important;
-    height: 190px !important;
-    background: #337efe !important;
-    color: white !important;
-    font-weight: bold !important;
-   
+.show-card {
+  width: 190px !important;
+  height: 190px !important;
+  background: #63aff7 !important;
+  color: white !important;
+  font-weight: bold !important;
+
 }
-.text-container{
+
+.text-container {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
 }
-#icon-medicamentos{
+
+#medicamentos {
+  border-radius: 40px;
+  background: #63aff7 !important;
+}
+
+#exames {
+  border-radius: 40px;
+  background: #63aff7 !important;
+}
+
+#consultas {
+  border-radius: 40px;
+  background: #63aff7 !important;
+}
+
+#icon-medicamentos {
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
 }
-#icon-exame{
+
+#icon-exame {
   display: flex;
   align-items: center;
   justify-content: center;

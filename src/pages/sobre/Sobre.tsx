@@ -12,7 +12,7 @@ function Sobre() {
                     </Grid>
                     <Grid className='description_text' item xs={12} md={6} style={{ width: '80%' }} >
                         <Box className='boxTextDescription'>
-                        <h1 style={{ color: "#63aff7", fontStyle: "italic" }}>Democratização da saúde</h1>
+                        <h1 style={{ color: "#001fb5", marginBottom:'7px' }}>Democratização da saúde</h1>
                     <Typography  gutterBottom color="textPrimary"
                         style={{ color: "black" }}>Duoctor é um projeto com base no Objetivo de Desenvolvimento Sustentável 3
                         (Saúde e Bem-Estar), que tem como propósito garantir acesso à saúde de qualidade e promover o bem-estar para todos.

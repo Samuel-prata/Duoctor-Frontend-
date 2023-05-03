@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import {  buscaId, deletar } from "../../../services/Services";
 import Categoria from "../../../models/Categoria";
 import React, { ChangeEvent } from 'react';
-import { TokenState } from "../../../store/tokens/TokensReducer";
+import { UserState } from "../../../store/tokens/TokensReducer";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
@@ -14,7 +14,7 @@ import { toast } from "react-toastify";
 export default function DeletarCategoria() {
     let navigate = useNavigate()
     const { id } = useParams<{ id: string }>();
-    const token = useSelector<TokenState, TokenState["tokens"]>(
+    const token = useSelector<UserState, UserState["tokens"]>(
         (state) =>state.tokens
     );
 

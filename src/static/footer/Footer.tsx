@@ -4,10 +4,10 @@ import {Box} from "@mui/material"
 import InstagramIcon from "@material-ui/icons/Instagram";
 import "./Footer.css"
 import { useSelector } from "react-redux";
-import { TokenState } from "../../store/tokens/TokensReducer";
+import { UserState } from "../../store/tokens/TokensReducer";
 
 function Footer() {
-    const token = useSelector<TokenState, TokenState["tokens"]>(
+    const token = useSelector<UserState, UserState["tokens"]>(
         (state) => state.tokens
     );
     

@@ -5,14 +5,14 @@ import './DeletarProdutos.css';
 import { buscaId, deletar} from '../../../services/Services';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { TokenState } from '../../../store/tokens/TokensReducer';
+import { UserState } from '../../../store/tokens/TokensReducer';
 import { toast } from 'react-toastify';
 import Produtos from '../../../models/Produtos';
 
 function DeletarProdutos() {
     let navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
-    const token = useSelector<TokenState, TokenState["tokens"]>(
+    const token = useSelector<UserState, UserState["tokens"]>(
         (state) =>state.tokens
     );
     const [produtos, setProdutos] = useState<Produtos>()

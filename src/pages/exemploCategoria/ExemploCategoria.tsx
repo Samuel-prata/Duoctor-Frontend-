@@ -19,7 +19,7 @@ export default function ExemploCategoria() {
                             <Typography variant="h5" component="h2">Medicamentos</Typography>
                         </CardContent>
                     </Card>
-                    <Card variant="outlined" className='show-card'>
+                    <Card variant="outlined" className='show-card' id="exames">
                         <CardContent className='card-conteudo'>
                         <div id="icon-exame">
                                 <LocalHospitalIcon/>
@@ -27,7 +27,7 @@ export default function ExemploCategoria() {
                             <Typography variant="h5" component="h2">Exames</Typography>
                         </CardContent>
                     </Card>
-                    <Card variant="outlined" className='show-card'>
+                    <Card variant="outlined" className='show-card' id="consultas">
                     <div id="icon-consultas">
                                 <MedicalServicesIcon/>
                                 </div>
@@ -36,7 +36,7 @@ export default function ExemploCategoria() {
                 </Grid>
                 <Grid className='text-container' item xs={6}  style={{ width: '30%' }} >
                     
-                        <h1 style={{ color: "#63aff7", fontStyle: "italic" }}>Doar nunca ficou tão fácil!</h1>
+                        <h1 style={{ color: "#001fb5" }}>Doar nunca ficou tão fácil!</h1>
                         {/* <Typography style={{ color: "black" }}>Faça o bem sem olhar a quem!</Typography> */}
                    
                 </Grid>
