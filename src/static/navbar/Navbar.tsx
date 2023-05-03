@@ -52,7 +52,7 @@ function Navbar() {
         }
     }, [id])
 
-   
+
     function goLogout() {
         dispatch(addToken(''));
         toast.info('Usuário deslogado', {
@@ -73,8 +73,9 @@ function Navbar() {
     if (token !== '') {
         dispatch(addToken(token))
         navbarComponent = <nav className='navlist'>
-
-            <Button className="options">Home</Button>
+            <Link to='/home'>
+                <Button className="options">Home</Button>
+            </Link>
 
             <Link to='/produtos'>
                 <Button className="options">Postagens</Button>
@@ -175,7 +176,7 @@ function Navbar() {
 
     return (
         <>
-            { navbarComponent }
+            {navbarComponent}
         </>
     );
 }
