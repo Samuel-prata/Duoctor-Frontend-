@@ -1,27 +1,22 @@
 import React from "react";
 import { AppBar, IconButton, Typography, Button } from "@material-ui/core"
 import Toolbar from '@material-ui/core/Toolbar'
-import MenuIcon from '@material-ui/icons/Menu';
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css"
-import { Home } from "@material-ui/icons";
-import { ClassNames } from "@emotion/react";
-import TextField from '@material-ui/core/TextField';
-import useLocalStorage from "react-use-localstorage";
 import { useDispatch, useSelector } from "react-redux";
-import { TokenState } from "../../store/tokens/TokensReducer";
+import { UserState } from "../../store/tokens/TokensReducer";
 import { toast } from "react-toastify";
 import { addToken } from "../../store/tokens/Actions";
 
 
 function Navbar() {
-    const token = useSelector<TokenState, TokenState["tokens"]>(
+    const token = useSelector<UserState, UserState["tokens"]>(
         (state) => state.tokens
     );
     let navigate = useNavigate()
     const dispatch = useDispatch();
 
-     function goLogout() {
+    function goLogout() {
         dispatch(addToken(''));
         toast.info('Usuário deslogado', {
             position: "top-right",
@@ -33,16 +28,44 @@ function Navbar() {
             theme: 'colored',
             progress: undefined,
         })
-        navigate('/entrar')
+        navigate('/home')
     }
-    return (
-        <>
+
+    var navbarComponent;
+
+    if (token !== '') {
+        dispatch(addToken(token))
+        navbarComponent = <nav className='navlist'>
+
+            <Button className="options">Home</Button>
+
+            <Link to='/produtos'>
+                <Button className="options">Postagens</Button>
+            </Link>
+
+            <Link to='/perfil'>
+                <Button className="options">Perfil</Button>
+            </Link>
+
+            <Button onClick={goLogout} className="options">Sair</Button>
+
+            <div className="search">
+                <form action="#">
+                    <input type="text"
+                        placeholder=" Procurar pelo id"
+                        name="search" />
+                </form>
+            </div>
+
+        </nav>
+    } else {
+
+        dispatch(addToken(''))
+        navbarComponent =
+
             <div className="root">
                 <AppBar position="static" className="appBar">
                     <Toolbar>
-                        <IconButton edge="start" className="menuButton" aria-label="menu" >
-                            <MenuIcon />
-                        </IconButton>
 
                         <Typography variant="h6" className="title">
                             <Link to='/home' className="homeLink">Home</Link>
@@ -53,24 +76,26 @@ function Navbar() {
                         </Link>
 
 
-                        <Link to='/formularioCategoria'>
-                            <Button className="options">Quero pedir ajuda</Button>
-                        </Link>
-
-                        
                         <Link to='/formularioProduto'>
-                        <Button className="options">Quero ser um doador</Button>
+                            <Button className="options">Peça ajuda</Button>
                         </Link>
-                        
+
+
+                        <Link to='/produtos'>
+                            <Button className="options">Seja um doador</Button>
+                        </Link>
+
                         <Link to='/entrar'>
-                            <Button onClick={goLogout} className="options">Sair</Button>
+                            <Button className="options">Entrar</Button>
                         </Link>
-
-
 
                     </Toolbar>
                 </AppBar>
             </div>
+    }
+    return (
+        <>
+            {navbarComponent}
 
         </>
     );

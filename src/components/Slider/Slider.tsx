@@ -10,7 +10,6 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Pagination, Navigation } from "swiper";
-import { FormatAlignJustify } from "@material-ui/icons";
 
 export default function Slider() {
     return (
@@ -18,6 +17,7 @@ export default function Slider() {
             <Swiper
                 slidesPerView={1}
                 spaceBetween={30}
+                autoplay
                 loop={true}
                 pagination={{
                     clickable: true,
@@ -26,8 +26,14 @@ export default function Slider() {
                 modules={[Pagination, Navigation]}
                 className="mySwiper"
             >
-                <SwiperSlide style={{background: 'blue' }}>Bem vindo</SwiperSlide>
-                <SwiperSlide style={{background: 'red'}}>Quero doar</SwiperSlide>
+
+                <SwiperSlide>
+                    <img src="src/assets/img/bemvindo.png" alt=""  />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <img src="src/assets/img/Phones & Accessories.png" alt="" />
+                </SwiperSlide>
                 <SwiperSlide style={{background: 'green'}}>Quero pedir ajuda</SwiperSlide>
             </Swiper>
         </>

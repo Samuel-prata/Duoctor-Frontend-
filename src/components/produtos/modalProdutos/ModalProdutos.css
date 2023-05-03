@@ -7,3 +7,8 @@
     background-color: #2592f0 !important;
     color: white !important; 
 }
+.position-modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

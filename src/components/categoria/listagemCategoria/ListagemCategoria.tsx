@@ -21,21 +21,21 @@ function ListagemCategoria() {
       );
     let navigate = useNavigate();
 
-    useEffect(() => {
-        if (token == '') {
-          toast.error('Você precisa estar logado', {
-            position: "top-right",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: false,
-            theme: 'colored',
-            progress: undefined,
-        })
-          navigate("/login")
-        }
-      }, [token])
+    // useEffect(() => {
+    //     if (token !== '') {
+    //       toast.error('Você precisa estar logado', {
+    //         position: "top-right",
+    //         autoClose: 2000,
+    //         hideProgressBar: false,
+    //         closeOnClick: true,
+    //         pauseOnHover: false,
+    //         draggable: false,
+    //         theme: 'colored',
+    //         progress: undefined,
+    //     })
+    //       navigate("/login")
+    //     }
+    //   }, [token])
       
     async function getCategoria() {
         await busca("/categoria", setCategoria, {
@@ -61,7 +61,7 @@ function ListagemCategoria() {
                                     Categoria
                                 </Typography>
                                 <Typography variant="h5" component="h2">{categoria.tipo}</Typography>
-                                <Typography variant="h5" component="h2">{categoria.descricao}</Typography>
+                                {/* <Typography variant="h5" component="h2">{categoria.descricao}</Typography> */}
                             </CardContent>
                             <CardActions>
                                 <Box display="flex" justifyContent="center" mb={1.5}>

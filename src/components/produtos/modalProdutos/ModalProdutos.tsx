@@ -57,11 +57,11 @@ function ModalProdutos() {
     );
 
     return (
-        <div>
+        <div className='position-modal'>
             <Button
                 variant="outlined"
                 className="btnModal"
-                onClick={handleOpen}>Adicionar Produto</Button>
+                onClick={handleOpen}>Pedir ajuda</Button>
             <Modal
                 open={open}
                 onClose={handleClose}

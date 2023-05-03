@@ -7,7 +7,7 @@ function Sobre() {
     return (
         <>
             <Grid container className="info" md={12} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <Grid item xs={12} md={6} className='imgDescriptionGrid'>
+                    <Grid className='imgDescriptionGrid' item xs={12} md={6} >
                         <img src={Avatar} alt="Logo2-Ducotor" />
                     </Grid>
                     <Grid className='description_text' item xs={12} md={6} style={{ width: '80%' }} >

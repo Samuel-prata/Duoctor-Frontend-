@@ -22,9 +22,27 @@
     font-weight: bold !important;
     color: white !important;
 }
+.options:hover{
+    color: #001fb5 !important;
+    background-color: white !important;
+}
 
 .homeLink {
     text-decoration: none;
     color: white;
     font-weight: bold;
+}
+
+/* navBar logado */
+.navlist{
+    padding: 7px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background: linear-gradient(90deg, rgba(0, 31, 181, 1) 0%, rgba(99, 175, 247, 1) 100%);
+}
+
+input{
+    padding: 7px;
+    border-radius: 20px;
 }

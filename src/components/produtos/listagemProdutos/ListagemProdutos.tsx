@@ -6,7 +6,7 @@ import './ListagemProdutos.css';
 import { useNavigate } from 'react-router-dom';
 import { busca } from '../../../services/Services';
 import { useSelector } from 'react-redux';
-import { TokenState } from '../../../store/tokens/TokensReducer';
+import { UserState } from '../../../store/tokens/TokensReducer';
 import { toast } from 'react-toastify';
 import Produtos from '../../../models/Produtos';
 
@@ -14,26 +14,26 @@ import Produtos from '../../../models/Produtos';
 function ListagemProdutos() {
   const [produtos, setProdutos] = useState<Produtos[]>([])
   let navigate = useNavigate();
-  const token = useSelector<TokenState, TokenState["tokens"]>(
-    (state) =>state.tokens
-);
+  const token = useSelector<UserState, UserState["tokens"]>(
+    (state) => state.tokens
+  );
 
-  useEffect(() => {
-    if (token == "") {
-      toast.error('Você precisa estar logado', {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: false,
-        theme: 'colored',
-        progress: undefined,
-    })
-      navigate("/entrar")
+  // useEffect(() => {
+  //   if (token == "") {
+  //     toast.error('Você precisa estar logado', {
+  //       position: "top-right",
+  //       autoClose: 2000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: false,
+  //       draggable: false,
+  //       theme: 'colored',
+  //       progress: undefined,
+  //     })
+  //     navigate("/entrar")
 
-    }
-  }, [token])
+  //   }
+  // }, [token])
 
   async function getPost() {
     await busca("/produtos", setProdutos, {
@@ -57,17 +57,17 @@ function ListagemProdutos() {
           <Box m={2} >
             <Card variant="outlined">
               <CardContent>
-                <Typography color="textSecondary" gutterBottom>
-                  Produtos
+                <Typography color="textSecondary" gutterBottom style={{fontWeight: 'bold'}}>
+                  Id: {produto.id}
                 </Typography>
                 <Typography variant="h5" component="h2">
                   {produto.nome}
                 </Typography>
-                <Typography variant="body2" component="p">
-                  {produto.preco}
+                <Typography variant="body2" component="p" style={{fontWeight: 'bold'}}>
+                  R$ {produto.preco}
                 </Typography>
-                <Typography variant="body2" component="p">
-                  {produto.quantidade}
+                <Typography variant="body2" component="p" style={{fontWeight: 'bold'}}>
+                 Quantidade: {produto.quantidade}
                 </Typography>
                 <Typography variant="body2" component="p">
                   {produto.descricao}
@@ -79,20 +79,27 @@ function ListagemProdutos() {
               <CardActions>
                 <Box display="flex" justifyContent="center" mb={1.5}>
 
-                  <Link to={`/formularioProduto/${produto.id}`} className="text-decorator-none" >
+                  {/* <Link to={`/formularioProduto/${produto.id}`} className="text-decorator-none" >
                     <Box mx={1}>
                       <Button variant="contained" className="marginLeft, btnAtualizar" size='small'>
                         atualizar
                       </Button>
+                    </Box> */}
+                  <Link to='/formularioProduto'>
+                    <Box mx={1} >
+                      <Button variant="contained" className='btnAjudar' size='small'>
+                        Ajudar
+                      </Button>
                     </Box>
                   </Link>
-                  <Link to={`/deletarProdutos/${produto.id}`} className="text-decorator-none">
+                  {/* </Link> */}
+                  {/* <Link to={`/deletarProdutos/${produto.id}`} className="text-decorator-none">
                     <Box mx={1}>
                       <Button variant="contained" size='small' className='btnDeletar'>
                         deletar
                       </Button>
                     </Box>
-                  </Link>
+                  </Link> */}
                 </Box>
               </CardActions>
             </Card>

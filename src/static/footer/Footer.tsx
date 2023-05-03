@@ -13,10 +13,18 @@ function Footer() {
     
     return (
         <>
+            {/* <section className="sobre">
+                <div className="colunas-sobre">
+                    <Typography></Typography>
+                </div>
+                <div className="colunas-sobre"></div>
+                <div className="colunas-sobre"></div>
+            </section> */}
+
             <Grid container direction="row" justifyContent="flex-end" alignItems="center">
                 <Grid alignItems="center" item xs={12}>
                     <Box className="redesSociais">
-                        <Box marginTop={20} display="flex" alignItems="center" justifyContent="center">
+                        <Box marginTop={5} display="flex" alignItems="center" justifyContent="center">
                             <Typography variant="h5" align="center" gutterBottom style={{ color: "black" }}>Confira nossa rede social: </Typography>
                         </Box>
                         <Box display="flex" alignItems="center" justifyContent="center">

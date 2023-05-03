@@ -10,24 +10,35 @@
   justify-content: space-between !important;
   padding: 0;
 } 
+.card-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-between;
+}
 
 .show-card{
-    width: 30% !important;
-    height: 50px ;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    justify-content: space-evenly;
-    flex-direction: column !important;
-    align-items: center;
+    width: 190px !important;
+    height: 190px !important;
     background: #337efe !important;
     color: white !important;
     font-weight: bold !important;
+   
 }
-
-.show-card:hover{
-  width: 35%;
-  height: 310px;
-  box-shadow: black 2rem;
+.text-container{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#icon-medicamentos{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+#icon-exame{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

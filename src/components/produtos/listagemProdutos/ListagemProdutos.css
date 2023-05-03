@@ -10,9 +10,16 @@
     margin-right: 20px !important;
 }
 
-.btnAtualizar {
-    border-color: white !important;
-    background-color: #31d279 !important; 
-    color: white !important; 
+.MuiButton-containedSizeSmall{
+    background-color: #63aff7 !important;
+    color: white !important;
     font-weight: bold !important;
+
+}
+
+.MuiCardActions-root{
+    display: flex;
+    padding: 8px;
+    align-items: center;
+    justify-content: center;
 }

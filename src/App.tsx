@@ -13,28 +13,33 @@ import ListagemCategoria from './components/categoria/listagemCategoria/Listagem
 import CadastroCategoria from './components/categoria/cadastroCategoria/CadastroCategoria'
 import DeletarCategoria from './components/categoria/deletarCategoria/DeletarCategoria';
 import CadastroProdutos from './components/produtos/cadastroProdutos/CadastroProdutos';
-import { Provider } from 'react-redux';
+import { Provider, useDispatch, useSelector } from 'react-redux';
 import store from './store/store';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ListagemProdutos from './components/produtos/listagemProdutos/ListagemProdutos';
 import DeletarProdutos from './components/produtos/deletarProdutos/DeletarProdutos';
+import Perfil from './pages/perfil/Perfil';
+
+
 
 
 
 
 function App() {
+
    return (
       <Provider store={store}>
-      <ToastContainer />
+         <ToastContainer />
          <BrowserRouter>
 
             <Navbar />
 
             <Routes>
-               <Route path='/' element={<Login />} />
+               <Route path='/' element={<Home />} />
+               <Route path='/home' element={<Home />} />
+               <Route path='/perfil' element={<Perfil />} />
                <Route path='/entrar' element={<Login />} />
-               <Route path='/home' element={<Home/>}  />
                <Route path='/sobre' element={<Sobre />} />
                <Route path='/cadastro' element={<CadastroUsuario />} />
                <Route path='/categorias' element={<ListagemCategoria />} />
@@ -45,15 +50,15 @@ function App() {
                <Route path='/formularioProduto' element={<CadastroProdutos />} />
                <Route path='/produtos' element={<ListagemProdutos />} />
                <Route path='/formularioProduto/:id' element={<CadastroProdutos />} />
-               <Route path='/deletarProdutos' element={<DeletarProdutos />} />
-               <Route path='/deletarProdutos/:id' element={<DeletarProdutos />} />
+               <Route path='/deletarProduto' element={<DeletarProdutos />} />
+               <Route path='/deletarProduto/:id' element={<DeletarProdutos />} />
 
             </Routes>
 
             <Footer />
-            
+
          </BrowserRouter>
-         </Provider>
+      </Provider>
    );
 }
 
