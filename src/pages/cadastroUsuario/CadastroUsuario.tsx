@@ -18,7 +18,7 @@ function CadastroUsuario() {
             usuario: '',
             foto: '',
             senha: '',
-            tipo: ''
+            tipo: 'comum'
         })
 
     const [userResult, setUserResult] = useState<User>(
@@ -55,6 +55,7 @@ function CadastroUsuario() {
         e.preventDefault()
         if (confirmarSenha === user.senha) {
            try {
+            console.log(user)
                 await cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
                 toast.success('Usuário cadastrado com sucesso', {
                     position: "top-right",
@@ -79,6 +80,7 @@ function CadastroUsuario() {
                     theme: 'colored',
                     progress: undefined,
                 })
+
             }
         } else {
             toast.error('Dados inconsistentes. Favor verificar as informações de cadastro', {

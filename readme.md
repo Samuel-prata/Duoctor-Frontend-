@@ -38,28 +38,15 @@ O Duoctor como plataforma de doação é uma iniciativa inovadora que visa promo
 Telas  
 Tela inicial;  
 Login;  
-Cadastro de endereço;  
-Sign up;  
-Home page;  
-Pesquisa;  
-Carrinho;  
-Restaurantes;  
-Pedido em andamento;  
+Cadastro;  
+Sign up;   
 Perfil;  
 Editar perfil;  
 Editar endereço.  
 Integração com API  
 Login;  
 Signup;  
-Add Address;  
-Get Full Address;  
-Get Profile;  
-Update Profile;  
-Get Restaurants;  
-Get Restaurant Detail;  
-Place Order;  
-Get Active Order;  
-Orders History.  
+
 
 ## 🚧 Em desenvolvimento  
 Versão Desktop  

@@ -8,7 +8,7 @@ import { login } from "../../services/Services";
 import './Login.css';
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { addToken } from "../../store/tokens/Actions";
+import { addId, addToken } from "../../store/tokens/Actions";
 
 function Copyright() {
     return (
@@ -40,6 +40,17 @@ export default function Login() {
         }
     )
 
+    const [respUserLogin, setRespUserLogin] = useState<UserLogin> ({
+        id: 0, 
+        nome: '',
+        usuario: '',
+        senha:'',
+        token: '',
+        foto:'',
+        tipo: ''
+
+    })
+
     function updatedModel(e: ChangeEvent<HTMLInputElement>) {
 
         setUserLogin({
@@ -55,12 +66,27 @@ export default function Login() {
         }
     }, [token])
 
+    useEffect(() => {
+        if (respUserLogin.token !== "") {
+
+            // Verifica os dados pelo console (Opcional)
+            console.log("Token: " + respUserLogin.token)
+            console.log("ID: " + respUserLogin.id)
+
+            // Guarda as informações dentro do Redux (Store)
+            dispatch(addToken(respUserLogin.token))
+            dispatch(addId(respUserLogin.id.toString()))    // Faz uma conversão de Number para String
+            navigate('/home')
+        }
+    }, [respUserLogin.token])
+
+
 
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault();//não atualizar a página
 
         try {
-            await login(`/usuarios/logar`, userLogin, setToken)
+            await login(`/usuarios/logar`, userLogin, setRespUserLogin)
 
             toast.success('Usuário logado com sucesso', {
                 position: "top-right",

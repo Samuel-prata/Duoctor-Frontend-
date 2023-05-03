@@ -5,7 +5,7 @@ interface UserLogin {
     senha: string;
     foto: string;
     tipo: String;
-    token?: string| null
+    token: string
 }
 
 export default UserLogin;
