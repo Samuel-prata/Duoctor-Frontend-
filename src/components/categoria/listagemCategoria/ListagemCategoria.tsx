@@ -18,7 +18,7 @@ function ListagemCategoria() {
     const [categorias, setCategoria] = useState<Categoria[]>([])
     const token = useSelector<UserState, UserState["tokens"]>(
         (state) => state.tokens
-      );
+    );
     let navigate = useNavigate();
 
     // useEffect(() => {
@@ -36,7 +36,7 @@ function ListagemCategoria() {
     //       navigate("/login")
     //     }
     //   }, [token])
-      
+
     async function getCategoria() {
         await busca("/categoria", setCategoria, {
             headers: {
@@ -61,22 +61,11 @@ function ListagemCategoria() {
                                     Categoria
                                 </Typography>
                                 <Typography variant="h5" component="h2">{categoria.tipo}</Typography>
-                                {/* <Typography variant="h5" component="h2">{categoria.descricao}</Typography> */}
+                                <Typography variant="h5" component="h2">{categoria.descricao}</Typography>
                             </CardContent>
                             <CardActions>
                                 <Box display="flex" justifyContent="center" mb={1.5}>
-                                    <Link to={`/formularioCategoria/${categoria.id}`} className='text-decorator-none'>
-                                        <Box>
-                                            <Button variant='contained' className="marginLeft" size='small'>Atualizar</Button>
-                                        </Box>
-                                    </Link>
-                                    <Link to={`/deletarCategoria/${categoria.id}`} className='text-decorator-none'>
-                                        <Box mx={1}>
-                                            <Button variant='contained' size='small'>
-                                                deletar
-                                            </Button>
-                                        </Box>
-                                    </Link>
+
                                 </Box>
                             </CardActions>
                         </Card>

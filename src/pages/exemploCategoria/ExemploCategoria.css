@@ -1,4 +1,4 @@
-.box-cards {
+.box-cards-exemplo {
   max-width: 100%;
   padding: 1.5rem 0;
   margin: 0 auto;
@@ -17,12 +17,15 @@
   justify-content: space-between;
 }
 
-.show-card {
+.show-card-exemplo {
   width: 190px !important;
   height: 190px !important;
   background: #63aff7 !important;
   color: white !important;
   font-weight: bold !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
 }
 

@@ -35,18 +35,18 @@ function Home() {
                 </Grid>
             </Grid>
 
-            <Grid container className="info" md={12} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <Sobre />
+            <Grid style={{ backgroundColor: "#f1f3f5", paddingBottom: '40px' }}>
+                <TabServicos />
+                <ModalProdutos />
             </Grid>
+
             <Grid container className="info" md={12} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <ExemploCategoria />
             </Grid>
 
-            <Grid  style={{ backgroundColor: "#f1f3f5" }}>
-                <TabServicos />
-                <ModalProdutos/>
+            <Grid container className="info" md={12} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Sobre />
             </Grid>
-
 
         </>
     );
