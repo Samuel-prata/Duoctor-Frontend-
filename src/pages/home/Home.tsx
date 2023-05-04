@@ -30,9 +30,10 @@ function Home() {
         var lista;
 
         if (token !== "") {
-            lista = <ListagemProdutos/>
-        }else{
             lista = <ListaProdutoHome/>
+           
+        }else{
+            lista = <ListagemProdutos/>
         }
 
     return (

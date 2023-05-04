@@ -71,14 +71,14 @@ export default function ListaProdutoHome() {
                                             </Button>
                                         </Box>
                                     </Link> */}
-                                    {/* </Link> */}
+                               
                                     <Link to={`/deletarProdutos/${produto.id}`} className="text-decorator-none">
                                         <Box mx={1}>
                                             <Button variant="contained" size='small' className='btnDeletar'>
                                                 deletar
                                             </Button>
                                         </Box>
-                                    </Link>
+                                    </Link> 
                                 </Box>
                             </CardActions>
                         </Card>
