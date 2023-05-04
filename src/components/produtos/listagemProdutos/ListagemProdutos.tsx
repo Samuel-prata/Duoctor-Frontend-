@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import { UserState } from '../../../store/tokens/TokensReducer';
 import { toast } from 'react-toastify';
 import Produtos from '../../../models/Produtos';
+import ModalProdutos from '../modalProdutos/ModalProdutos';
 
 
 function ListagemProdutos() {
@@ -48,7 +49,7 @@ function ListagemProdutos() {
     getPost()
 
   }, [produtos.length])
-  
+
 
   return (
     <>
@@ -57,17 +58,17 @@ function ListagemProdutos() {
           <Box m={2} >
             <Card variant="outlined">
               <CardContent>
-                <Typography color="textSecondary" gutterBottom style={{fontWeight: 'bold'}}>
+                <Typography color="textSecondary" gutterBottom style={{ fontWeight: 'bold' }}>
                   Id: {produto.id}
                 </Typography>
                 <Typography variant="h5" component="h2">
                   {produto.nome}
                 </Typography>
-                <Typography variant="body2" component="p" style={{fontWeight: 'bold'}}>
+                <Typography variant="body2" component="p" style={{ fontWeight: 'bold' }}>
                   R$ {produto.preco}
                 </Typography>
-                <Typography variant="body2" component="p" style={{fontWeight: 'bold'}}>
-                 Quantidade: {produto.quantidade}
+                <Typography variant="body2" component="p" style={{ fontWeight: 'bold' }}>
+                  Quantidade: {produto.quantidade}
                 </Typography>
                 <Typography variant="body2" component="p">
                   {produto.descricao}
@@ -84,7 +85,8 @@ function ListagemProdutos() {
                       <Button variant="contained" className="marginLeft, btnAtualizar" size='small'>
                         atualizar
                       </Button>
-                    </Box> */}
+                    </Box>
+                  </Link> */}
                   <Link to='/formularioProduto'>
                     <Box mx={1} >
                       <Button variant="contained" className='btnAjudar' size='small'>
@@ -92,7 +94,6 @@ function ListagemProdutos() {
                       </Button>
                     </Box>
                   </Link>
-                  {/* </Link> */}
                   {/* <Link to={`/deletarProdutos/${produto.id}`} className="text-decorator-none">
                     <Box mx={1}>
                       <Button variant="contained" size='small' className='btnDeletar'>

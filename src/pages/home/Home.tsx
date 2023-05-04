@@ -27,14 +27,14 @@ function Home() {
     const token = useSelector<UserState, UserState["tokens"]>(
         (state) => state.tokens
     );
-        var lista;
+    var lista;
 
-        if (token !== "") {
-            lista = <ListaProdutoHome/>
-           
-        }else{
-            lista = <ListagemProdutos/>
-        }
+    if (token === "") {
+        lista = <ListagemProdutos />
+
+    } else {
+        lista = <ListaProdutoHome />
+    }
 
     return (
 
@@ -53,13 +53,12 @@ function Home() {
                         <Tab className="fontes" label="Todas as Postagens" ></Tab>
                     </Tabs>
                 </AppBar>
-                {/* <ListagemProdutos /> */}
                 {lista}
                 <ModalProdutos />
             </Grid>
 
             <Grid container className="info" md={12} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <AppBar className="barra-info" position="static">
+                <AppBar className="barra-info" position="static">
                     <Tabs>
                         <Tab className="fontes" label="Categorias"></Tab>
                     </Tabs>

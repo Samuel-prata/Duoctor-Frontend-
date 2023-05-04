@@ -65,7 +65,7 @@ function CadastroProdutos() {
     }, [id])
 
     async function getCategorias() {
-        await busca("/categoria", setCategorias, {
+        await busca('/categoria', setCategorias, {
             headers: {
                 'Authorization': token
             }
@@ -95,12 +95,12 @@ function CadastroProdutos() {
 
         if (id !== undefined) {
             try {
-                await put(`/produtos`, produtos, setProdutos, {
+                await put('/produtos', produtos, setProdutos, {
                     headers: {
                         'Authorization': token
                     }
                 })
-                toast.success('Produtos atualizada com sucesso', {
+                toast.success('Solicitação atualizada com sucesso', {
                     position: "top-right",
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -111,7 +111,7 @@ function CadastroProdutos() {
                     progress: undefined,
                 })
             } catch (error) {
-                toast.error('Erro ao atualizar sua produtos verifique os campos!', {
+                toast.error('Erro ao atualizar sua solicitação verifique os campos!', {
                     position: "top-right",
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -126,12 +126,12 @@ function CadastroProdutos() {
         } else {
             try {
                 console.log(produtos)
-                post(`/produtos`, produtos, setProdutos, {
+                await post('/produtos', produtos, setProdutos, {
                     headers: {
                         'Authorization': token
                     }
                 })
-                toast.success('Produtos cadastrada com sucesso', {
+                toast.success('Solicitação cadastrada com sucesso', {
                     position: "top-right",
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -142,7 +142,7 @@ function CadastroProdutos() {
                     progress: undefined,
                 })
             } catch (error) {
-                toast.error('Erro ao cadastrar sua produto, tente novamente!', {
+                toast.error('Erro ao cadastrar sua solicitação, tente novamente!', {
                     position: "top-right",
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -185,7 +185,7 @@ function CadastroProdutos() {
                         })}>
                         {
                             categorias.map(categoria => (
-                                <MenuItem value={categoria.id}>{categoria.tipo}{categoria.descricao}</MenuItem>
+                                <MenuItem value={categoria.id}>{categoria.tipo}</MenuItem>
                             ))
                         }
 

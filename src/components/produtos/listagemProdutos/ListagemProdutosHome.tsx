@@ -5,6 +5,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { UserState } from "../../../store/tokens/TokensReducer";
 import Produtos from "../../../models/Produtos";
 import { busca } from "../../../services/Services";
+import { toast } from "react-toastify";
 
 
 export default function ListaProdutoHome() {
@@ -27,6 +28,23 @@ export default function ListaProdutoHome() {
         getPost()
 
     }, [produtos.length])
+
+    useEffect(() => {
+    if (token == "") {
+      toast.error('Você precisa estar logado', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: 'colored',
+        progress: undefined,
+      })
+      navigate("/entrar")
+
+    }
+  }, [token])
     return (
         <>
 

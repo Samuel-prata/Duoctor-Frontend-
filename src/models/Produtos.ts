@@ -1,4 +1,5 @@
 import Categoria from "./Categoria";
+import User from "./User";
 
 interface Produtos {
     id: number,

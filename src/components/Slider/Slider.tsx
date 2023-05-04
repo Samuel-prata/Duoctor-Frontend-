@@ -27,7 +27,7 @@ export default function Slider() {
                 className="mySwiper"
             >
                 <SwiperSlide>
-                    <img src="src/assets/img/bemvindo (1).png" alt="" />
+                    <img src="https://uploaddeimagens.com.br/images/004/453/302/full/Sem_nome_%2812_%C3%97_3_cm%29%281%29.png?1683204119" alt="" />
                 </SwiperSlide>
 
                 <SwiperSlide>
