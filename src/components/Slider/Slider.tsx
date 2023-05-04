@@ -27,11 +27,11 @@ export default function Slider() {
                 className="mySwiper"
             >
                 <SwiperSlide>
-                    <img src="src/assets/img/Sem_nome_12_3_cm1.svg" alt="" />
+                    <img src="src/assets/img/bemvindo (1).png" alt="" />
                 </SwiperSlide>
 
                 <SwiperSlide>
-                    <img src="src/assets/img/Sem_nome_12_3_cm.svg" alt="" />
+                    <img src="src/assets/img/slogan.png" alt="" />
                 </SwiperSlide>
             </Swiper>
         </>

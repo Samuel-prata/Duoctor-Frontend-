@@ -19,6 +19,7 @@ import ModalProdutos from "../../components/produtos/modalProdutos/ModalProdutos
 import ListagemCategoria from "../../components/categoria/listagemCategoria/ListagemCategoria";
 import ListagemProdutos from "../../components/produtos/listagemProdutos/ListagemProdutos";
 import { AppBar, Tab, Tabs } from "@mui/material";
+import ListaProdutoHome from "../../components/produtos/listagemProdutos/ListagemProdutosHome";
 
 
 function Home() {
@@ -26,6 +27,13 @@ function Home() {
     const token = useSelector<UserState, UserState["tokens"]>(
         (state) => state.tokens
     );
+        var lista;
+
+        if (token !== "") {
+            lista = <ListagemProdutos/>
+        }else{
+            lista = <ListaProdutoHome/>
+        }
 
     return (
 
@@ -44,7 +52,8 @@ function Home() {
                         <Tab className="fontes" label="Todas as Postagens" ></Tab>
                     </Tabs>
                 </AppBar>
-                <ListagemProdutos />
+                {/* <ListagemProdutos /> */}
+                {lista}
                 <ModalProdutos />
             </Grid>
 
