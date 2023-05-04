@@ -5,12 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "scripts":{
-  "start":"react-scripts start",
-    "build": "CI=false && react-scripts build",
-    "test":"react-scripts test",
-    "eject": "react-scripts eject"
-  },
+    "build": "tsc && vite build"
     "preview": "vite preview"
   },
   "dependencies": {
