@@ -1,16 +1,19 @@
 import React from "react";
-import {Grid, Typography} from "@material-ui/core";
-import {Box} from "@mui/material"
-import InstagramIcon from "@material-ui/icons/Instagram";
+import { Grid, Typography, Card } from '@material-ui/core';
+import { Box } from "@mui/material"
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import "./Footer.css"
 import { useSelector } from "react-redux";
 import { UserState } from "../../store/tokens/TokensReducer";
+import InstagramIcon from '@material-ui/icons/Instagram';
+import GitHubIcon from '@mui/icons-material/GitHub';
+
 
 function Footer() {
     const token = useSelector<UserState, UserState["tokens"]>(
         (state) => state.tokens
     );
-    
+
     return (
         <>
             {/* <section className="sobre">
@@ -21,28 +24,43 @@ function Footer() {
                 <div className="colunas-sobre"></div>
             </section> */}
 
-            <Grid container direction="row" justifyContent="flex-end" alignItems="center">
+            <Grid container direction="row"  alignItems="center">
                 <Grid alignItems="center" item xs={12}>
                     <Box className="redesSociais">
-                        <Box marginTop={5} display="flex" alignItems="center" justifyContent="center">
-                            <Typography variant="h5" align="center" gutterBottom style={{ color: "black" }}>Confira nossa rede social: </Typography>
+                        <Box display="flex" alignItems="center" justifyContent="center">
+                            <Typography variant="h5" align="center" style={{ color: "gray" }}>
+                                Parceiros:
+                            </Typography>
                         </Box>
                         <Box display="flex" alignItems="center" justifyContent="center">
-                            
-                            <a href="https://www.instagram.com/projetoduoctor/" target="_blank">
-                                <InstagramIcon style={{ fontSize: 45, color: "black" }} />
-                            </a>
-                          
+                            <Box id="img-scale"><img id="img-parceiros" src="src/assets/img/1.png" alt="" /></Box >
+                            <Box id="img-scale"><img id="img-parceiros" src="src/assets/img/2.png" alt="" /></Box >
+                            <Box id="img-scale"><img id="img-parceiros" src="src/assets/img/3.png" alt="" /></Box >
                         </Box>
+
+
                     </Box>
                     <Box className="footer" >
-                        <Box paddingTop={1}>
-                            <Typography variant="subtitle2" align="center" gutterBottom style={{ color: "white", fontWeight:"bold" }} >© 2023 Copyright:</Typography>
-                        </Box>
                         <Box>
-                            <a target="_blank" href="https://www.google.com/intl/pt-BR/gmail/about/#inbox">
-                                <Typography variant="subtitle2" gutterBottom style={{ color: "white", fontWeight:"bold", textDecoration:"none" }} align="center">projetoduoctor@gmail.com</Typography>
-                            </a>
+                            <ul>
+                                <Typography className="letra-footer" variant="h4">Contatos</Typography>
+                                <Box className="tel-icon"><p id="number"> <LocalPhoneIcon /> +55 (12)9990-98432</p></Box>
+
+                            </ul>
+                        </Box>
+
+                        <Box>
+                            <ul>
+                                <Typography className="letra-footer" variant="h4">Nosso Canal</Typography>
+                                <Box className="insta-icon">
+                                    <a href="https://www.instagram.com/oduoctor/" target="_blank" id="btn-icon">
+                                        <InstagramIcon />
+                                    </a>
+                                    <a href="https://github.com/Samuel-prata/Duoctor-Frontend-" target="_blank" id="btn-icon">
+                                        <GitHubIcon />
+                                    </a>
+                                </Box>
+                            </ul>
                         </Box>
                     </Box>
                 </Grid>

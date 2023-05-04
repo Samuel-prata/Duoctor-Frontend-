@@ -1,33 +1,80 @@
-.card-principal{
+#perfil {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    margin: auto;
+}
+
+.perfil-visualizacao {
+    width: 60%;
+}
+
+#barra-visualizacao {
+    width: 30%;
+    background-color: red;
+}
+
+.card-principal {
     display: flex;
     border-radius: 32px 0;
     padding: 20px;
     margin: 20px;
-    background-color: #3f51b5;
+    background-color: #63aff7;
+    flex-direction: column;
+    width: 100%;
 }
 
-.card-container-imagem{
+.card-perfil{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0 40px;
 }
 
-.card-container-info{
+.card-container-info {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     margin: 32px 32px 32px 56px;
+    width: 100%;
 }
 
-.card-imagem{
-    max-height: 500px;
-    border-radius: 32px;
-    object-fit: cover;
+.card-imagem {
+    padding: 50px;
+    height: 200px;
+    background: #63aff7;
+    border-radius: 100%;
 }
 
-.card-container-texto{
+.card-container-texto {
     max-width: 550px;
     color: #fff;
     text-align: justify;
+}
+
+
+.elementos-laterais {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.grid-funcoes {
+    margin-top: 5% !important;
+}
+.grid-pai{
+    display: flex !important;
+    justify-content: center !important;
+
+
+}
+.box-cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
 }

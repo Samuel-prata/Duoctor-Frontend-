@@ -16,6 +16,9 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import TabServicos from './tabServicos/TabServicos';
 import ModalProdutos from "../../components/produtos/modalProdutos/ModalProdutos";
+import ListagemCategoria from "../../components/categoria/listagemCategoria/ListagemCategoria";
+import ListagemProdutos from "../../components/produtos/listagemProdutos/ListagemProdutos";
+import { AppBar, Tab, Tabs } from "@mui/material";
 
 
 function Home() {
@@ -36,12 +39,22 @@ function Home() {
             </Grid>
 
             <Grid style={{ backgroundColor: "#f1f3f5", paddingBottom: '40px' }}>
-                <TabServicos />
+                <AppBar className="barra-info" position="static">
+                    <Tabs>
+                        <Tab className="fontes" label="Todas as Postagens" ></Tab>
+                    </Tabs>
+                </AppBar>
+                <ListagemProdutos />
                 <ModalProdutos />
             </Grid>
 
             <Grid container className="info" md={12} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <ExemploCategoria />
+            <AppBar className="barra-info" position="static">
+                    <Tabs>
+                        <Tab className="fontes" label="Categorias"></Tab>
+                    </Tabs>
+                </AppBar>
+                <ListagemCategoria />
             </Grid>
 
             <Grid container className="info" md={12} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

@@ -23,21 +23,21 @@ function CadastroCategoria() {
         descricao: ''
     })
 
-    useEffect(() => {
-        if (token == "") {
-            toast.error('Você precisa estar logado', {
-                position: "top-right",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                theme: 'colored',
-                progress: undefined,
-            })
-            navigate("/entrar")
-        }
-        }, [token])
+    // useEffect(() => {
+    //     if (token == "") {
+    //         toast.error('Você precisa estar logado', {
+    //             position: "top-right",
+    //             autoClose: 2000,
+    //             hideProgressBar: false,
+    //             closeOnClick: true,
+    //             pauseOnHover: false,
+    //             draggable: false,
+    //             theme: 'colored',
+    //             progress: undefined,
+    //         })
+    //         navigate("/entrar")
+    //     }
+    //     }, [token])
 
     useEffect(() => {
         if (id !== undefined) {

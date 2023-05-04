@@ -16,24 +16,13 @@ export default function TabServicos() {
 
     return (
         <>
-            <TabContext value={value}>
+            
                 <AppBar position="static">
-                    <Tabs centered className="butPost" onChange={handleEvent} >
-                        <Tab className="fontes" label="Todas as Postagens" value='1'></Tab>
-                        <Tab className="fontes" label="Categorias" value='2'></Tab>
+                    <Tabs>
+                        <Tab className="fontes" label="Todas as Postagens" ></Tab>
+                        <Tab className="fontes" label="Categorias"></Tab>
                     </Tabs>
                 </AppBar>
-                <TabPanel value="1">
-                    <Box display='flex' flexWrap='wrap' justifyContent='center'>
-                        <ListagemProdutos />
-                    </Box>
-                </TabPanel>
-                <TabPanel value="2">
-                <Box display='flex' flexWrap='wrap' justifyContent='center'>
-                        <ListagemCategoria />
-                    </Box>
-                </TabPanel>
-            </TabContext>
         </>
 
     );

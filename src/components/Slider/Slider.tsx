@@ -26,15 +26,13 @@ export default function Slider() {
                 modules={[Pagination, Navigation]}
                 className="mySwiper"
             >
-
                 <SwiperSlide>
-                    <img src="src/assets/img/bemvindo.png" alt=""  />
+                    <img src="src/assets/img/Sem_nome_12_3_cm1.svg" alt="" />
                 </SwiperSlide>
 
                 <SwiperSlide>
-                    <img src="src/assets/img/Phones & Accessories.png" alt="" />
+                    <img src="src/assets/img/Sem_nome_12_3_cm.svg" alt="" />
                 </SwiperSlide>
-                <SwiperSlide style={{background: 'green'}}>Quero pedir ajuda</SwiperSlide>
             </Swiper>
         </>
     );

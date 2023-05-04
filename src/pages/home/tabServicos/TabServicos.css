@@ -4,8 +4,9 @@
     font-weight: bold;
 }
 .butPost{
-    background: #63aff7;
-    color: black;
+    background: #001fb5 ;
+    /* background: #03989e; */
+    color: white !important;
 }
 .fontes{
     font-weight: bold !important;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Box, Grid } from '@mui/material'
-import { Card, CardActions, CardContent, Typography, Button, Paper } from '@material-ui/core'
+import { Box, CardMedia, Grid } from '@mui/material'
+import { Card, CardActions, CardContent, Typography, Button, Paper, CardActionArea } from '@material-ui/core'
 import { Link, useNavigate } from 'react-router-dom'
 import useLocalStorage from 'react-use-localstorage'
 import { busca } from '../../../services/Services'
@@ -55,19 +55,37 @@ function ListagemCategoria() {
                 {
 
                     categorias.map(categoria => (
-                        <Card variant="outlined" className='show-card'>
-                            <CardContent className='card-conteudo'>
-                                <Typography gutterBottom>
-                                    Categoria
-                                </Typography>
-                                <Typography variant="h5" component="h2">{categoria.tipo}</Typography>
-                                <Typography variant="h5" component="h2">{categoria.descricao}</Typography>
-                            </CardContent>
-                            <CardActions>
-                                <Box display="flex" justifyContent="center" mb={1.5}>
+                        // <Card variant="outlined" className='show-card'>
+                        //     <CardContent className='card-conteudo'>
+                        //         <Typography gutterBottom>
+                        //             Categoria
+                        //         </Typography>
+                        //         <Typography variant="h5" component="h2">{categoria.tipo}</Typography>
+                        //         <Typography variant="h5" component="h2">{categoria.descricao}</Typography>
+                        //     </CardContent>
+                        //     <CardActions>
+                        //         <Box display="flex" justifyContent="center" mb={1.5}>
 
-                                </Box>
-                            </CardActions>
+                        //         </Box>
+                        //     </CardActions>
+                        // </Card>
+                        <Card>
+                            <CardActionArea>
+                                <CardMedia
+                                    component="img"
+                                    height="140"
+                                    image="src/assets/img/hand-holds-medicine-capsules-icon-sign-symbol-blue-background-3d-illustration-cartoon-healthcare-medical-concept.jpg"
+                                    alt="green iguana"
+                                />
+                                <CardContent>
+                                    <Typography  variant="h5" component="div">
+                                        {categoria.tipo}
+                                    </Typography>
+                                    <Typography variant="body2">
+                                       {categoria.descricao}
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>
                         </Card>
                     ))}
             </Grid>

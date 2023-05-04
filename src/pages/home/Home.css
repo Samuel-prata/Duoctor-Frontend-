@@ -1,3 +1,13 @@
 .info{
     background: #f1f3f5;
 }
+.barra-info{
+    margin-top: 10px;
+    background: linear-gradient(90deg, rgba(93,224,230,1) 0%, rgba(0,74,173,1) 95%);
+    justify-content: center;
+    align-items: center;
+}
+.fontes{
+    color: white !important;
+    font-weight: bold !important;
+}

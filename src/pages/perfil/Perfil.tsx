@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
-import { Box } from '@mui/material';
+import { Box, Button, Card, Grid } from '@mui/material';
 import { useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
-
 import User from '../../models/User';
 import { UserState } from '../../store/tokens/TokensReducer';
 import { buscaId } from '../../services/Services';
 import './Perfil.css'
+
+import { CardActions, CardContent, Container, Typography } from '@material-ui/core';
 
 export default function Perfil() {
 
@@ -55,29 +56,53 @@ export default function Perfil() {
     }, [id])
 
     return (
-        <Box className='card-principal'>
-            <Box className='card-container-imagem'>
-                <img className='card-imagem'
-                    src={user.foto}
-                    alt={user.nome} />
-            </Box>
+        <>
+            <Container className='grid-pai' >
+                <Grid container display='flex' spacing={8} xs={9} rowSpacing={0.2} columnSpacing={{ xs: 3, sm: 2, md: 3 }}>
+                    <Grid item xs={9}>
+                        <Card sx={{ minWidth: 275 }}>
+                            <CardContent className='card-perfil'>
+                                <Typography >
+                                    <img className='card-imagem'
+                                        src='src/assets/img/user.png'
+                                        alt={user.nome} />
+                                </Typography>
+                                <Box>
+                                    <Typography variant="h5" component="div">
+                                        Nome: {user.nome}
+                                    </Typography>
+                                </Box>
+                                <Box>
+                                    <Typography>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam deleniti minus assumenda fugiat iure vero
+                                        culpa quod optio quasi libero quidem soluta ab quae accusamus repellat quibusdam at, rerum laboriosam.
+                                    </Typography>
+                                </Box>
 
-            <Box className='card-container-info'>
-                <Box>
-                    <h1>titulo{user.nome}</h1>
-                    <hr />
-                </Box>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                    <Grid container xs={3} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                        <Grid item xs={12} className='grid-funcoes'>
+                            <Card >
+                                <CardContent>
+                                    <Typography >
+                                        Minhas postagens
+                                    </Typography>
+                                    <Typography >
+                                        minhas curtidas
+                                    </Typography>
+                                    <Typography>
+                                        minhas doações
+                                    </Typography>
 
-                <p className='card-container-texto'>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam accusantium totam incidunt architecto maiores, perferendis eius. Tempora ullam magni dolore voluptatibus, quidem sunt tempore distinctio ut aliquam modi aliquid officiis.
-                    Assumenda voluptatibus, animi pariatur voluptatum magnam ullam aspernatur optio suscipit incidunt dolor modi quos aperiam. Quam possimus rerum iste nobis quas porro unde sequi, sed nisi labore est voluptas corrupti.
-                    Deleniti officiis sint perspiciatis nisi iste, voluptate sunt asperiores dolor sapiente non corporis omnis voluptatem soluta. Nulla odio alias aperiam, magnam eaque assumenda tempora! Inventore odit iure unde placeat iste.
-                </p>
+                                </CardContent>
+                            </Card>
+                        </Grid>
 
-                <p className='card-container-texto'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias consectetur tempore enim hic ad, optio ratione repellendus et. Nemo facilis laborum eum facere ipsam ab ad iusto eligendi deleniti qui?
-                </p>
-            </Box>
-        </Box>
+                    </Grid>
+                </Grid>
+            </Container>
+        </>
     )
 }
