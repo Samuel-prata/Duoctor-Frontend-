@@ -33,9 +33,9 @@ function Footer() {
                             </Typography>
                         </Box>
                         <Box display="flex" alignItems="center" justifyContent="center">
-                            <Box id="img-scale"><img id="img-parceiros" src="src/assets/img/1.png" alt="" /></Box >
-                            <Box id="img-scale"><img id="img-parceiros" src="src/assets/img/2.png" alt="" /></Box >
-                            <Box id="img-scale"><img id="img-parceiros" src="src/assets/img/3.png" alt="" /></Box >
+                            <Box id="img-scale"><img id="img-parceiros" src="https://live.staticflickr.com/65535/52872499439_2a66464cbb_m.jpg" alt="" /></Box >
+                            <Box id="img-scale"><img id="img-parceiros" src="https://live.staticflickr.com/65535/52872499404_4e5bf92a7d_m.jpg" alt="" /></Box >
+                            <Box id="img-scale"><img id="img-parceiros" src="https://live.staticflickr.com/65535/52872708370_d67ba5ee65_m.jpg" alt="" /></Box >
                         </Box>
 
 

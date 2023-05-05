@@ -27,11 +27,11 @@ export default function Slider() {
                 className="mySwiper"
             >
                 <SwiperSlide>
-                    <img src="https://uploaddeimagens.com.br/images/004/453/302/full/Sem_nome_%2812_%C3%97_3_cm%29%281%29.png?1683204119" alt="" />
+                    <img src="https://i.imgur.com/sN89Vei.png" alt="" />
                 </SwiperSlide>
 
                 <SwiperSlide>
-                    <img src="src/assets/img/slogan.png" alt="" />
+                    <img src="https://i.ibb.co/Rv5yfrV/slogan.png" alt="" />
                 </SwiperSlide>
             </Swiper>
         </>

@@ -74,7 +74,7 @@ function ListagemCategoria() {
                                 <CardMedia
                                     component="img"
                                     height="140"
-                                    image="src/assets/img/hand-holds-medicine-capsules-icon-sign-symbol-blue-background-3d-illustration-cartoon-healthcare-medical-concept.jpg"
+                                    image="https://i.imgur.com/cHZCw7K.jpeg"
                                     alt="green iguana"
                                 />
                                 <CardContent>

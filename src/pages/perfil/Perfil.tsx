@@ -64,7 +64,7 @@ export default function Perfil() {
                             <CardContent className='card-perfil'>
                                 <Typography >
                                     <img className='card-imagem'
-                                        src='src/assets/img/user.png'
+                                        src='https://i.imgur.com/6aERgO2.png'
                                         alt={user.nome} />
                                 </Typography>
                                 <Box>
