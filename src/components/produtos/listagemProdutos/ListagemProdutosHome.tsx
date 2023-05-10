@@ -30,21 +30,21 @@ export default function ListaProdutoHome() {
     }, [produtos.length])
 
     useEffect(() => {
-    if (token == "") {
-      toast.error('Você precisa estar logado', {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: false,
-        theme: 'colored',
-        progress: undefined,
-      })
-      navigate("/entrar")
+        if (token == "") {
+            toast.error('Você precisa estar logado', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: 'colored',
+                progress: undefined,
+            })
+            navigate("/entrar")
 
-    }
-  }, [token])
+        }
+    }, [token])
     return (
         <>
 
@@ -53,24 +53,30 @@ export default function ListaProdutoHome() {
                     <Box m={2} >
                         <Card variant="outlined">
                             <CardContent>
-                                <Typography color="textSecondary" gutterBottom style={{ fontWeight: 'bold' }}>
-                                    Id: {produto.id}
-                                </Typography>
-                                <Typography variant="h5" component="h2">
-                                    {produto.nome}
-                                </Typography>
-                                <Typography variant="body2" component="p" style={{ fontWeight: 'bold' }}>
-                                    R$ {produto.preco}
-                                </Typography>
-                                <Typography variant="body2" component="p" style={{ fontWeight: 'bold' }}>
-                                    Quantidade: {produto.quantidade}
-                                </Typography>
-                                <Typography variant="body2" component="p">
-                                    {produto.descricao}
-                                </Typography>
+                                <Box className='post-header'>
+                                    <img src={produto.usuario?.foto} alt={produto.usuario?.nome} className='avatar-lista' />
+                                    <Typography variant='subtitle1' style={{ fontWeight: 'bold' }}> Usuário: {produto.usuario?.nome}</Typography>
+                                </Box>
                                 <Typography variant="body2" component="p">
                                     {produto.categoria?.tipo}
                                 </Typography>
+
+                                <Typography variant="h5" component="h2">
+                                    {produto.nome}
+                                </Typography>
+
+                                <Typography variant="body2" component="p" style={{ fontWeight: 'bold' }}>
+                                    R$ {produto.preco}
+                                </Typography>
+
+                                <Typography variant="body2" component="p" style={{ fontWeight: 'bold' }}>
+                                    Quantidade: {produto.quantidade}
+                                </Typography>
+
+                                <Typography variant="body2" component="p">
+                                    {produto.descricao}
+                                </Typography>
+
                             </CardContent>
                             <CardActions>
                                 <Box display="flex" justifyContent="center" mb={1.5}>
@@ -89,14 +95,14 @@ export default function ListaProdutoHome() {
                                             </Button>
                                         </Box>
                                     </Link> */}
-                               
+
                                     <Link to={`/deletarProdutos/${produto.id}`} className="text-decorator-none">
                                         <Box mx={1}>
                                             <Button variant="contained" size='small' className='btnDeletar'>
                                                 deletar
                                             </Button>
                                         </Box>
-                                    </Link> 
+                                    </Link>
                                 </Box>
                             </CardActions>
                         </Card>

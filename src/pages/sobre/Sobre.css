@@ -1,0 +1,29 @@
+.imgDescriptionGrid img {
+    filter: grayscale(1);
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.imgDescriptionGrid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.description-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.css-0 img:hover{
+    filter: grayscale(0);
+    cursor: pointer;
+}
+
+.info{
+    flex-direction: row ;
+    justify-content: space-between;
+}
+
