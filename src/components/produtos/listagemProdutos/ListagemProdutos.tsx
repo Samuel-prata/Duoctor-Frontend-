@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
-import { Box } from '@mui/material';
+import { Avatar, Box, CardHeader, Grid } from '@mui/material';
 import './ListagemProdutos.css';
 import { useNavigate } from 'react-router-dom';
-import { busca } from '../../../services/Services';
+import { busca, post } from '../../../services/Services';
 import { useSelector } from 'react-redux';
 import { UserState } from '../../../store/tokens/TokensReducer';
 import { toast } from 'react-toastify';
@@ -18,6 +18,8 @@ function ListagemProdutos() {
   const token = useSelector<UserState, UserState["tokens"]>(
     (state) => state.tokens
   );
+
+
 
   // useEffect(() => {
   //   if (token == "") {
@@ -58,23 +60,29 @@ function ListagemProdutos() {
           <Box m={2} >
             <Card variant="outlined">
               <CardContent>
-                <Typography color="textSecondary" gutterBottom style={{ fontWeight: 'bold' }}>
-                  Id: {produto.id}
+                <Box className='post-header'>
+                  <img src={produto.usuario?.foto} alt={produto.usuario?.nome} className='avatar-lista' />
+                  <Typography variant='subtitle1' style={{fontWeight: 'bold'}}> Usuário: {produto.usuario?.nome}</Typography>
+                  </Box>          
+                <Typography variant="body2" component="p">
+                  Categoria: {produto.categoria?.tipo}
                 </Typography>
+
                 <Typography variant="h5" component="h2">
                   {produto.nome}
                 </Typography>
+
                 <Typography variant="body2" component="p" style={{ fontWeight: 'bold' }}>
                   R$ {produto.preco}
                 </Typography>
+
                 <Typography variant="body2" component="p" style={{ fontWeight: 'bold' }}>
                   Quantidade: {produto.quantidade}
                 </Typography>
+                
                 <Typography variant="body2" component="p">
                   {produto.descricao}
-                </Typography>
-                <Typography variant="body2" component="p">
-                  {produto.categoria?.tipo}
+                
                 </Typography>
               </CardContent>
               <CardActions>

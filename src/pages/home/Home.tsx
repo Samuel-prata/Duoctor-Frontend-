@@ -47,6 +47,10 @@ function Home() {
                 </Grid>
             </Grid>
 
+            <Grid container className="info" md={12} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Sobre />
+            </Grid>
+
             <Grid style={{ backgroundColor: "#f1f3f5", paddingBottom: '40px' }}>
                 <AppBar className="barra-info" position="static">
                     <Tabs>
@@ -64,10 +68,6 @@ function Home() {
                     </Tabs>
                 </AppBar>
                 <ListagemCategoria />
-            </Grid>
-
-            <Grid container className="info" md={12} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <Sobre />
             </Grid>
 
         </>

@@ -8,6 +8,7 @@ import { busca, buscaId, post, put } from '../../../services/Services';
 import { UserState } from '../../../store/tokens/TokensReducer';
 import { useSelector } from 'react-redux';
 import {toast} from 'react-toastify';
+import User from '../../../models/User';
 
 function CadastroProdutos() {
   
@@ -18,8 +19,39 @@ function CadastroProdutos() {
         (state) => state.tokens
     );
 
+    //PEGA ID GUARDADO NA STORE
+    const userId = useSelector<UserState, UserState["id"]>(
+        (state) => state.id
+    )
+
+    const [categoria, setCategoria] = useState<Categoria>(
+        {
+            id: 0,
+            tipo: '',
+            descricao: ''
+        })
+
+    const [produtos, setProdutos] = useState<Produtos>({
+        id: 0,
+        nome: '',
+        preco: 0,
+        quantidade: 0,
+        descricao: '',
+        categoria: null,
+        usuario: null
+    })
+
+    const[user, setUser] = useState<User>({
+        id: +userId,
+        nome: '',
+        usuario: '',
+        senha: '',
+        foto: '',
+        tipo: ''
+    })
+
     useEffect(() => {
-        if (token == "") {
+        if (token === "") {
             toast.error('Você precisa estar logado', {
                 position: "top-right",
                 autoClose: 2000,
@@ -35,20 +67,7 @@ function CadastroProdutos() {
         }
     }, [token])
 
-    const [categoria, setCategoria] = useState<Categoria>(
-        {
-            id: 0,
-            tipo: '',
-            descricao: ''
-        })
-    const [produtos, setProdutos] = useState<Produtos>({
-        id: 0,
-        nome: '',
-        preco: 0,
-        quantidade: 0,
-        descricao: '',
-        categoria: null
-    })
+   
 
     useEffect(() => {
         setProdutos({
@@ -57,12 +76,14 @@ function CadastroProdutos() {
         })
     }, [categoria])
 
+
     useEffect(() => {
         getCategorias()
         if (id !== undefined) {
             findByIdProdutos(id)
         }
     }, [id])
+
 
     async function getCategorias() {
         await busca('/categoria', setCategorias, {
@@ -85,7 +106,8 @@ function CadastroProdutos() {
         setProdutos({
             ...produtos,
             [e.target.name]: e.target.value,
-            categoria: categoria
+            categoria: categoria,
+            usuario: user
         })
 
     }
@@ -94,6 +116,7 @@ function CadastroProdutos() {
         e.preventDefault()
 
         if (id !== undefined) {
+
             try {
                 await put('/produtos', produtos, setProdutos, {
                     headers: {
@@ -110,6 +133,7 @@ function CadastroProdutos() {
                     theme: 'colored',
                     progress: undefined,
                 })
+
             } catch (error) {
                 toast.error('Erro ao atualizar sua solicitação verifique os campos!', {
                     position: "top-right",
@@ -124,6 +148,7 @@ function CadastroProdutos() {
             }
 
         } else {
+
             try {
                 console.log(produtos)
                 await post('/produtos', produtos, setProdutos, {
@@ -141,6 +166,7 @@ function CadastroProdutos() {
                     theme: 'colored',
                     progress: undefined,
                 })
+                
             } catch (error) {
                 toast.error('Erro ao cadastrar sua solicitação, tente novamente!', {
                     position: "top-right",

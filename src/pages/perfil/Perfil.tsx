@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Box, Button, Card, Grid } from '@mui/material';
+import { Avatar, Box, Button, Card, Grid } from '@mui/material';
 import { useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
 import User from '../../models/User';
@@ -62,10 +62,10 @@ export default function Perfil() {
                     <Grid item xs={9}>
                         <Card sx={{ minWidth: 275 }}>
                             <CardContent className='card-perfil'>
+                                <Box className='card-imagem'><img width='100vw' height='100vh' src={user.foto}
+                                        alt={user.nome} /></Box>
                                 <Typography >
-                                    <img className='card-imagem'
-                                        src='https://i.imgur.com/6aERgO2.png'
-                                        alt={user.nome} />
+                                    
                                 </Typography>
                                 <Box>
                                     <Typography variant="h5" component="div">

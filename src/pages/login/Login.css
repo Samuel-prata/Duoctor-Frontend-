@@ -27,7 +27,16 @@
 .form {}
 
 .linksAjuda {
-    padding: 30px;
+    text-decoration: none;
+}
+.link-reset{
+    margin: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .checkbox {

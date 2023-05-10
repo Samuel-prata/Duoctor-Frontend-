@@ -42,10 +42,10 @@
 }
 
 .card-imagem {
-    padding: 50px;
-    height: 200px;
-    background: #63aff7;
-    border-radius: 100%;
+    padding: 100px;
+    width: 50%;
+    height: 50%;
+    border: 1px solid black;
 }
 
 .card-container-texto {
