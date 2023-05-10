@@ -1,4 +1,4 @@
-import React, {useState, useEffect, ChangeEvent} from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";
 import { Grid, Typography, TextField } from '@material-ui/core';
 import { Box, Button } from "@mui/material";
 import './CadastroUsuario.css';
@@ -28,7 +28,7 @@ function CadastroUsuario() {
             usuario: '',
             foto: '',
             senha: '',
-            tipo:''
+            tipo: ''
         })
 
     useEffect(() => {
@@ -37,7 +37,7 @@ function CadastroUsuario() {
         }
     }, [userResult])
 
-
+    //ACIONANDO EVENTO PARA CONFIRMAR SENHA
     function confirmarSenhaHandle(e: ChangeEvent<HTMLInputElement>) {
         setConfirmarSenha(e.target.value)
     }
@@ -49,13 +49,16 @@ function CadastroUsuario() {
             ...user,
             [e.target.name]: e.target.value
         })
-
     }
+
+    //ESTRUTURA CONDICIONAL PARA VER SE AS SENHAS BATEM
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
         if (confirmarSenha === user.senha) {
-           try {
-            console.log(user)
+
+            //TENTA EXECUTAR O CADASTRO
+            try {
+                console.log(user)
                 await cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
                 toast.success('Usuário cadastrado com sucesso', {
                     position: "top-right",
@@ -67,7 +70,8 @@ function CadastroUsuario() {
                     theme: 'colored',
                     progress: undefined,
                 })
-                
+
+                //SE HOUVER ERRO É RETORNANDO UMA MENSAGEM
             } catch (error) {
                 console.log(`Error: ${error}`)
                 toast.error('Erro ao cadastrar usuário', {
@@ -80,8 +84,8 @@ function CadastroUsuario() {
                     theme: 'colored',
                     progress: undefined,
                 })
-
             }
+
         } else {
             toast.error('Dados inconsistentes. Favor verificar as informações de cadastro', {
                 position: "top-right",
@@ -94,8 +98,8 @@ function CadastroUsuario() {
                 progress: undefined,
             })
 
-            setUser({ ...user, senha: "" })
-            setConfirmarSenha("")
+            setUser({ ...user, senha: "" }) //REINICIA O CAMPO DE SENHA
+            setConfirmarSenha("") //REINICIA O CAMPO DE CONFIRMAR SENHA
         }
     }
     return (
@@ -105,6 +109,7 @@ function CadastroUsuario() {
                 <Box paddingX={10}>
                     <form onSubmit={onSubmit}>
                         <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' className='textos2'>Cadastrar</Typography>
+                        <TextField value={user.foto} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='Foto' label='Link da foto' variant='outlined' name='foto' margin='normal' type='text' fullWidth />
                         <TextField value={user.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='nome' label='Nome' variant='outlined' name='nome' margin='normal' fullWidth />
                         <TextField value={user.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='usuario' label='Usuario' variant='outlined' name='usuario' margin='normal' fullWidth />
                         <TextField value={user.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='senha' label='Senha' variant='outlined' name='senha' margin='normal' type='password' fullWidth />

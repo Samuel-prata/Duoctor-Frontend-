@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
-import { Box } from '@mui/material';
+import { Avatar, Box, CardHeader } from '@mui/material';
 import './ListagemProdutos.css';
 import { useNavigate } from 'react-router-dom';
 import { busca } from '../../../services/Services';
@@ -18,6 +18,8 @@ function ListagemProdutos() {
   const token = useSelector<UserState, UserState["tokens"]>(
     (state) => state.tokens
   );
+
+
 
   // useEffect(() => {
   //   if (token == "") {
@@ -58,9 +60,12 @@ function ListagemProdutos() {
           <Box m={2} >
             <Card variant="outlined">
               <CardContent>
-                <Typography color="textSecondary" gutterBottom style={{ fontWeight: 'bold' }}>
+                {/* <Typography color="textSecondary" gutterBottom style={{ fontWeight: 'bold' }}>
                   Id: {produto.id}
-                </Typography>
+                </Typography> */}
+                <CardHeader>
+                  <Avatar>{produto.usuario?.foto}</Avatar>
+                </CardHeader>
                 <Typography variant="h5" component="h2">
                   {produto.nome}
                 </Typography>

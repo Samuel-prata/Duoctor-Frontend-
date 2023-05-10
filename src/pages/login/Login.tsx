@@ -36,17 +36,17 @@ export default function Login() {
             senha: '',
             foto: '',
             token: '',
-            tipo:''
+            tipo: ''
         }
     )
 
-    const [respUserLogin, setRespUserLogin] = useState<UserLogin> ({
-        id: 0, 
+    const [respUserLogin, setRespUserLogin] = useState<UserLogin>({
+        id: 0,
         nome: '',
         usuario: '',
-        senha:'',
+        senha: '',
         token: '',
-        foto:'',
+        foto: '',
         tipo: ''
 
     })
@@ -114,7 +114,7 @@ export default function Login() {
     }
 
     return (
-    
+
         <Grid container>
             <Grid container component="main" className="root">
                 <Grid item xs={6} className="image" />
@@ -165,15 +165,15 @@ export default function Login() {
                             >
                                 Entre
                             </Button>
-                            <Grid container className="linksAjuda">
-                                <Grid item xs>
-                                    <Link to="#">
-                                        Esqueceu a senha?
+                            <Grid container className="link-reset" >
+                                <Grid item  >
+                                    <Link to="#" className="linksAjuda">
+                                    <Button variant="outlined" size="small">Esqueceu a senha ?</Button>
                                     </Link>
                                 </Grid>
                                 <Grid item>
-                                    <Link to="/cadastro">
-                                        {"Não tem uma conta? Cadastre-se"}
+                                    <Link to="/cadastro" className="linksAjuda">
+                                        <Button variant="outlined" size="small">Não tem uma conta? Cadastre-se</Button>
                                     </Link>
                                 </Grid>
                             </Grid>

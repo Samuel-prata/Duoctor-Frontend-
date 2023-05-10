@@ -6,8 +6,9 @@ interface Produtos {
     nome: string,
     preco: number,
     quantidade: number,
-    descricao: string
-    categoria?: Categoria | null
+    descricao: string,
+    categoria?: Categoria | null,
+    usuario?: User | null
 }
 
 export default Produtos;
